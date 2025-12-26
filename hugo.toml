@@ -22,3 +22,14 @@ theme = "hugo-PaperMod"
     # Hiện danh sách bài viết ngay trang chủ
     showFullContent = false
     displayFullContent = false
+
+[outputs]
+    home = ["HTML", "RSS"]
+    page = ["HTML"]
+    section = ["HTML"]
+
+[params]
+    # Thiết lập cho PaperMod hiện danh sách bài viết ở trang chủ
+    defaultTheme = "auto"
+    displayFullContent = false
+    showShareButtons = true
