@@ -1,14 +1,14 @@
 /* Ẩn hoàn toàn danh sách bài viết mặc định ở trang chủ */
-/* .home-posts, 
+.home-posts, 
 main > article:not(:first-child),
 .list-page {
     display: none !important;
-} */
+}
 
 /* Đảm bảo phần nội dung mình tự viết (trong _index.md) vẫn hiện */
-/* main > article:first-child {
+main > article:first-child {
     display: block !important;
     border: none !important;
     box-shadow: none !important;
     background: transparent !important;
-} */
+}

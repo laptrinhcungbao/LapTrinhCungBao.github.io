@@ -4,28 +4,21 @@ title = "Lập Trình Cùng Bảo"
 theme = "hugo-PaperMod"
 
 [params]
-    # Tắt ProfileMode ở trang chủ để hiện nội dung từ file _index.md
-    [params.profileMode]
-        enabled = false
+    defaultTheme = "dark"
+    hidePageList = true      # Ẩn danh sách bài viết cũ
+    showFullTextContent = true # Hiện nội dung HTML mình vừa viết
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Cho phép chạy HTML trong file .md
 
 [menu]
   [[menu.main]]
-    name = "🏠 Trang chủ"
+    name = "Trang chủ"
     url = "/"
     weight = 10
   [[menu.main]]
-    name = "📝 Bài đăng"
-    url = "/posts/"
+    name = "Bài đăng"
+    url = "/posts/cate"
     weight = 20
-  [[menu.main]]
-    name = "🎓 Kinh nghiệm"
-    url = "/experience/"
-    weight = 30
-  [[menu.main]]
-    name = "🙋 Thông tin của Bảo"
-    url = "/about/"
-    weight = 40
-  [[menu.main]]
-    name = "📞 Liên hệ"
-    url = "/contact/"
-    weight = 50

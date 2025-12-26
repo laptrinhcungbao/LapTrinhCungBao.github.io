@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>JavaScript on Lập Trình Cùng Bảo</title>
+    <link>http://localhost:1313/categories/javascript/</link>
+    <description>Recent content in JavaScript on Lập Trình Cùng Bảo</description>
+    <generator>Hugo -- 0.153.2</generator>
+    <language>vi</language>
+    <lastBuildDate>Fri, 26 Dec 2025 21:35:00 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bài 9: Lộ trình trở thành lập trình viên Fullstack</title>
+      <link>http://localhost:1313/posts/bai-9/</link>
+      <pubDate>Fri, 26 Dec 2025 21:35:00 +0700</pubDate>
+      <guid>http://localhost:1313/posts/bai-9/</guid>
+      <description>Góc nhìn tổng quan về con đường trở thành lập trình viên từ Backend Java đến Frontend JavaScript.</description>
+    </item>
+    <item>
+      <title>Bài 8: Xử lý bất đồng bộ với Async và Await</title>
+      <link>http://localhost:1313/posts/bai-8/</link>
+      <pubDate>Fri, 26 Dec 2025 21:30:00 +0700</pubDate>
+      <guid>http://localhost:1313/posts/bai-8/</guid>
+      <description>Kỹ thuật xử lý các tác vụ tốn thời gian mà không làm treo trình duyệt với Async và Await.</description>
+    </item>
+    <item>
+      <title>Bài 7: Thao tác với DOM bằng JavaScript</title>
+      <link>http://localhost:1313/posts/bai-7/</link>
+      <pubDate>Fri, 26 Dec 2025 21:25:00 +0700</pubDate>
+      <guid>http://localhost:1313/posts/bai-7/</guid>
+      <description>Cách điều khiển và thay đổi nội dung website động thông qua thao tác với cây cấu trúc DOM.</description>
+    </item>
+    <item>
+      <title>Bài 6: Làm chủ biến và kiểu dữ liệu trong JavaScript</title>
+      <link>http://localhost:1313/posts/bai-6/</link>
+      <pubDate>Fri, 26 Dec 2025 21:20:00 +0700</pubDate>
+      <guid>http://localhost:1313/posts/bai-6/</guid>
+      <description>Tìm hiểu về biến, kiểu dữ liệu và cách vận hành của ngôn ngữ lập trình phổ biến nhất thế giới.</description>
+    </item>
+  </channel>
+</rss>
