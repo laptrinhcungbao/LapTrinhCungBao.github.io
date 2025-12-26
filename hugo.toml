@@ -3,7 +3,7 @@ languageCode = "vi"
 title = "Lập Trình Cùng Bảo"
 theme = "hugo-PaperMod"
 
-# Cấu hình menu theo yêu cầu đồ án
+# Cấu hình menu
 [[menu.main]]
     name = "Home"
     url = "/"
@@ -13,23 +13,18 @@ theme = "hugo-PaperMod"
     url = "/posts/"
     weight = 20
 
-# Cấu hình caches đúng cú pháp TOML
-[caches]
-  [caches.images]
-    dir = ":cacheDir/images"
-
+# Gộp tất cả params vào đây (Chỉ dùng một dòng [params] duy nhất)
 [params]
-    # Hiện danh sách bài viết ngay trang chủ
-    showFullContent = false
+    defaultTheme = "auto"
     displayFullContent = false
+    showShareButtons = true
+    showCodeCopyButtons = true
 
 [outputs]
     home = ["HTML", "RSS"]
     page = ["HTML"]
     section = ["HTML"]
 
-[params]
-    # Thiết lập cho PaperMod hiện danh sách bài viết ở trang chủ
-    defaultTheme = "auto"
-    displayFullContent = false
-    showShareButtons = true
+[caches]
+  [caches.images]
+    dir = ":cacheDir/images"
