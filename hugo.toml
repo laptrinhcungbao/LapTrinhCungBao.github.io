@@ -16,6 +16,7 @@ theme = "hugo-PaperMod"
 # Gộp tất cả params vào đây (Chỉ dùng một dòng [params] duy nhất)
 [params]
     defaultTheme = "auto"
+    googleAnalytics = ""
     displayFullContent = false
     showShareButtons = true
     showCodeCopyButtons = true
