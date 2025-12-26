@@ -1,4 +1,4 @@
-baseURL = "https://baoheo-12345.github.io/LapTrinhCungBao.github.io/"
+baseURL = "https://laptrinhcungbao.github.io/"
 languageCode = "vi"
 title = "Lập Trình Cùng Bảo"
 theme = "hugo-PaperMod"
