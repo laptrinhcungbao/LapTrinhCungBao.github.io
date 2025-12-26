@@ -3,38 +3,29 @@ languageCode = "vi"
 title = "Lập Trình Cùng Bảo"
 theme = "hugo-PaperMod"
 
+[params]
+    # Tắt ProfileMode ở trang chủ để hiện nội dung từ file _index.md
+    [params.profileMode]
+        enabled = false
+
 [menu]
   [[menu.main]]
-    name = "Trang chủ"
+    name = "🏠 Trang chủ"
     url = "/"
     weight = 10
   [[menu.main]]
-    name = "Lập trình Java"
-    url = "/categories/java/"
+    name = "📝 Bài đăng"
+    url = "/posts/"
     weight = 20
   [[menu.main]]
-    name = "JavaScript"
-    url = "/categories/javascript/"
+    name = "🎓 Kinh nghiệm"
+    url = "/experience/"
     weight = 30
   [[menu.main]]
-    name = "Thông tin về Bảo"
+    name = "🙋 Thông tin của Bảo"
     url = "/about/"
     weight = 40
-
-[params]
-    # Thông tin cá nhân hiện ở trang chủ (Profile Mode)
-    [params.profileMode]
-        enabled = true
-        title = "Chào mừng đến với Blog của Bảo"
-        subtitle = "Sinh viên lập trình | Đam mê Java & Web Development"
-        imageUrl = "https://github.com/laptrinhcungbao.png" # Lấy ảnh đại diện GitHub của bạn
-        imageTitle = "Võ Văn Bảo"
-        [[params.profileMode.buttons]]
-            name = "Xem bài viết"
-            url = "/posts/"
-
-    # Hiển thị tóm tắt và ảnh
-    ShowReadingTime = true
-    ShowPostNavLinks = true
-    ShowBreadCrumbs = true
-    ShowCodeCopyButtons = true
+  [[menu.main]]
+    name = "📞 Liên hệ"
+    url = "/contact/"
+    weight = 50
