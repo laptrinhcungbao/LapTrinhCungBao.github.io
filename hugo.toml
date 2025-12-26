@@ -1,4 +1,4 @@
-baseURL = "https://laptrinhcungbao.github.io/"
+baseURL = "https://baoheo-12345.github.io/LapTrinhCungBao.github.io/"
 languageCode = "vi"
 title = "Lập Trình Cùng Bảo"
 theme = "hugo-PaperMod"
@@ -17,3 +17,8 @@ theme = "hugo-PaperMod"
 [caches]
   [caches.images]
     dir = ":cacheDir/images"
+
+[params]
+    # Hiện danh sách bài viết ngay trang chủ
+    showFullContent = false
+    displayFullContent = false
