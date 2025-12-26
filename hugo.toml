@@ -1,0 +1,7 @@
+baseURL = "https://laptrinhcungbao.github.io/"
+languageCode = "vi"
+title = "Lập Trình Cùng Bảo"
+theme = "PaperMod"
+caches:
+  images:
+    dir: :cacheDir/images
