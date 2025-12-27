@@ -1,43 +1,143 @@
-<div style="display: flex; gap: 30px; align-items: flex-start; margin-top: 20px;">
-  <div style="flex: 1; min-width: 150px; display: flex; flex-direction: column; gap: 15px; position: sticky; top: 20px;">
-    <button onclick="showPosts('java')" style="padding: 18px; border-radius: 15px; border: 2px solid #f89820; background: #fdf2e9; color: #f89820; font-size: 1.2rem; cursor: pointer; font-weight: bold;">
-      ☕ Java
+<div class="custom-container">
+  <!-- Sidebar Menu -->
+  <div class="sidebar-menu">
+    <button class="tab-btn active" id="btn-java" onclick="showPosts('java')">
+      <span class="icon">☕</span> Java
     </button>
-    <button onclick="showPosts('js')" style="padding: 18px; border-radius: 15px; border: 2px solid #00abff; background: #eef7ff; color: #00abff; font-size: 1.2rem; cursor: pointer; font-weight: bold;">
-      ⚡ JavaScript
+    <button class="tab-btn" id="btn-js" onclick="showPosts('js')">
+      <span class="icon">⚡</span> JavaScript
     </button>
   </div>
 
-  <div style="flex: 3; display: flex; flex-direction: column; gap: 12px;">
-    <div id="java-list">
-      <a href="/posts/bai-1/" class="p-item">📄 Bài 1: Cài đặt Java</a>
-      <a href="/posts/bai-2/" class="p-item">📄 Bài 2: Đa luồng</a>
-      <a href="/posts/bai-3/" class="p-item">📄 Bài 3: JDBC</a>
-      <a href="/posts/bai-4/" class="p-item">📄 Bài 4: Swing</a>
-      <a href="/posts/bai-5/" class="p-item">📄 Bài 5: Servlet</a>
+  <!-- Content List -->
+  <div class="content-list">
+    <div id="java-list" class="list-container">
+      <a href="/posts/bai-1/" class="p-item java-border">📄 Bài 1: Cài đặt Java</a>
+      <a href="/posts/bai-2/" class="p-item java-border">📄 Bài 2: Đa luồng</a>
+      <a href="/posts/bai-3/" class="p-item java-border">📄 Bài 3: JDBC</a>
+      <a href="/posts/bai-4/" class="p-item java-border">📄 Bài 4: Swing</a>
+      <a href="/posts/bai-5/" class="p-item java-border">📄 Bài 5: Servlet</a>
     </div>
-    <div id="js-list" style="display: none;">
-      <a href="/posts/bai-6/" class="p-item" style="border-color: #00abff;">⚡ Bài 6: JS Cơ bản</a>
-      <a href="/posts/bai-7/" class="p-item" style="border-color: #00abff;">⚡ Bài 7: DOM</a>
-      <a href="/posts/bai-8/" class="p-item" style="border-color: #00abff;">⚡ Bài 8: Async</a>
-      <a href="/posts/bai-9/" class="p-item" style="border-color: #00abff;">⚡ Bài 9: Fullstack</a>
+    
+    <div id="js-list" class="list-container" style="display: none;">
+      <a href="/posts/bai-6/" class="p-item js-border">⚡ Bài 6: JS Cơ bản</a>
+      <a href="/posts/bai-7/" class="p-item js-border">⚡ Bài 7: DOM</a>
+      <a href="/posts/bai-8/" class="p-item js-border">⚡ Bài 8: Async</a>
+      <a href="/posts/bai-9/" class="p-item js-border">⚡ Bài 9: Fullstack</a>
     </div>
   </div>
 </div>
 
 <style>
-  .p-item { display: block; padding: 20px; background: #dfdfeb; border-radius: 12px; border: 1px solid #444; text-decoration: none; color: #000; margin-bottom: 10px; }
-  .p-item:hover { background: #cfcfe0; }
+  /* Container chính */
+  .custom-container {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    margin-top: 30px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Cột nút bấm bên trái */
+  .sidebar-menu {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: sticky;
+    top: 20px;
+  }
+
+  .tab-btn {
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1e293b; /* Màu tertiary giống CSS trước */
+    color: #94a3b8;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: left;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tab-btn:hover {
+    background: #334155;
+    color: #fff;
+  }
+
+  /* Trạng thái nút đang được chọn */
+  .tab-btn.active#btn-java {
+    border-color: #f89820;
+    color: #f89820;
+    background: rgba(248, 152, 32, 0.1);
+  }
+
+  .tab-btn.active#btn-js {
+    border-color: #00abff;
+    color: #00abff;
+    background: rgba(0, 171, 255, 0.1);
+  }
+
+  /* Danh sách bài viết */
+  .content-list {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .p-item {
+    display: block;
+    padding: 18px 25px;
+    background: #1e293b;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  /* Màu viền riêng cho từng loại bài */
+  .java-border { border-left-color: #f89820; }
+  .js-border { border-left-color: #00abff; }
+
+  .p-item:hover {
+    background: #334155;
+    transform: translateX(8px);
+    color: #fff;
+  }
+
+  /* Responsive cho điện thoại */
+  @media (max-width: 768px) {
+    .custom-container { flex-direction: column; }
+    .sidebar-menu { width: 100%; position: static; flex-direction: row; }
+    .tab-btn { flex: 1; justify-content: center; }
+  }
 </style>
 
 <script>
   function showPosts(type) {
+    const javaList = document.getElementById('java-list');
+    const jsList = document.getElementById('js-list');
+    const btnJava = document.getElementById('btn-java');
+    const btnJs = document.getElementById('btn-js');
+
     if(type === 'java') {
-      document.getElementById('java-list').style.display = 'block';
-      document.getElementById('js-list').style.display = 'none';
+      javaList.style.display = 'block';
+      jsList.style.display = 'none';
+      btnJava.classList.add('active');
+      btnJs.classList.remove('active');
     } else {
-      document.getElementById('java-list').style.display = 'none';
-      document.getElementById('js-list').style.display = 'block';
+      javaList.style.display = 'none';
+      jsList.style.display = 'block';
+      btnJava.classList.remove('active');
+      btnJs.classList.add('active');
     }
   }
 </script>

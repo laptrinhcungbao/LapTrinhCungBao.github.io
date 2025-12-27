@@ -1,77 +1,210 @@
-<div style="max-width: 1100px; margin: 0 auto; padding: 20px; font-family: sans-serif; color: #eee;">
-    
-    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
-        
-        <div style="flex: 2.5; min-width: 350px;">
-            <h1 style="color: #f89820; font-size: 2.5rem; margin-bottom: 20px;">🌐 Khám phá Java & JavaScript cùng Bảo</h1>
-            <p style="font-size: 1.1rem; line-height: 1.6; color: #ccc;">
-                Chào mừng bạn đến với không gian học tập của mình! Tại đây, chúng ta sẽ cùng nhau chinh phục hai "gã khổng lồ" trong giới lập trình: **Java** - xương sống của các hệ thống Enterprise và **JavaScript** - linh hồn của web hiện đại.
-            </p>
+<style>
+    /* Biến màu sắc & Reset */
+    :root {
+        --bg-color: #0b0f1a;
+        --card-bg: rgba(22, 28, 45, 0.7);
+        --java-color: #fb923c;
+        --js-color: #38bdf8;
+        --text-main: #f1f5f9;
+        --text-muted: #94a3b8;
+        --accent: #f89820;
+    }
 
-            <hr style="border: 0.5px solid #444; margin: 30px 0;">
+    .modern-portfolio {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        color: var(--text-main);
+        background-color: var(--bg-color);
+        line-height: 1.8;
+    }
 
-            <section>
-                <h2 style="color: #f89820;">☕ Ngôn ngữ Java (Backend Powerhouse)</h2>
-                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 15px;">
-                    <img src="/images/javator.jpg" style="width:120px; border-radius: 15px; border: 2px solid #f89820;">
-                    <p style="font-style: italic; color: #aaa;">"Write Once, Run Anywhere" - Triết lý làm nên tên tuổi của Java từ năm 1991.</p>
-                </div>
-                <p>Java không chỉ là một ngôn ngữ, nó là một hệ sinh thái bền bỉ. Với máy ảo Java (JVM), code của bạn có thể chạy trên mọi nền tảng từ điện thoại Android đến các siêu máy chủ ngân hàng.</p>
-                
-                <h3 style="color: #f89820; font-size: 1.2rem; margin-top: 20px;">✨ 4 tính chất cốt lõi của OOP</h3>
-                <div style="background: #2e2e33; padding: 15px; border-radius: 10px; border-left: 5px solid #f89820;">
-                    <ol>
-                        <li><strong>Đóng gói (Encapsulation):</strong> Bảo vệ dữ liệu bên trong đối tượng.</li>
-                        <li><strong>Kế thừa (Inheritance):</strong> Tái sử dụng code hiệu quả giữa các class.</li>
-                        <li><strong>Đa hình (Polymorphism):</strong> Một hành động, nhiều cách thực hiện.</li>
-                        <li><strong>Trừu tượng (Abstraction):</strong> Tập trung vào cái "làm gì" thay vì "làm thế nào".</li>
-                    </ol>
-                </div>
-                <img src="/images/java.jpg" style="width:100%; border-radius: 12px; margin-top: 15px; opacity: 0.9;">
-            </section>
+    /* Header Section */
+    .hero-section {
+        text-align: center;
+        margin-bottom: 60px;
+    }
 
-            <div style="margin: 50px 0;"></div>
+    .hero-title {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -1px;
+        background: linear-gradient(90deg, #f89820, #fbbf24);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+    }
 
-            <section>
-                <h2 style="color: #00abff;">⚡ Ngôn ngữ JavaScript (The Web King)</h2>
-                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 15px;">
-                    <img src="/images/js-logo.png" style="width:120px; border-radius: 15px; border: 2px solid #00abff; background: #fff; padding: 5px;">
-                    <p style="font-style: italic; color: #aaa;">JavaScript là ngôn ngữ duy nhất có thể chạy mượt mà trên cả Frontend và Backend (NodeJS).</p>
-                </div>
-                <p>Từ một ngôn ngữ kịch bản đơn giản, JS đã tiến hóa vượt bậc với các framework mạnh mẽ như React, Vue, Angular. Nó giúp trang web của bạn trở nên sống động với các hiệu ứng mượt mà và xử lý dữ liệu thời gian thực.</p>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 10px;">✅ <strong>Asynchronous:</strong> Xử lý bất đồng bộ giúp web không bị treo khi tải dữ liệu.</li>
-                    <li style="margin-bottom: 10px;">✅ <strong>DOM Manipulation:</strong> Thay đổi nội dung trang web mà không cần load lại.</li>
-                    <li style="margin-bottom: 10px;">✅ <strong>NPM Ecosystem:</strong> Kho thư viện khổng lồ hỗ trợ mọi nhu cầu lập trình.</li>
-                </ul>
-            </section>
-        </div>
+    /* Main Layout */
+    .content-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        align-items: flex-start;
+    }
 
-        <div style="flex: 1.2; min-width: 300px; background: #252529; padding: 25px; border-radius: 15px; border: 1px solid #444; position: sticky; top: 20px;">
-            <h3 style="margin-top: 0; color: #fff; border-bottom: 2px solid #f89820; display: inline-block; padding-bottom: 5px;">🆕 Lộ trình bài học</h3>
+    .main-content {
+        flex: 2.5;
+        min-width: 350px;
+    }
+
+    .sidebar-roadmap {
+        flex: 1.2;
+        min-width: 320px;
+        position: sticky;
+        top: 20px;
+    }
+
+    /* Content Cards */
+    .story-card {
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: 35px;
+        margin-bottom: 40px;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease;
+    }
+
+    .story-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(248, 152, 32, 0.3);
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-top: 0;
+    }
+
+    /* Images */
+    .author-img {
+        width: 180px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        transition: 0.3s;
+    }
+
+    /* Sidebar Widget */
+    .widget {
+        background: #1e1e22;
+        padding: 25px;
+        border-radius: 20px;
+        border: 1px solid #444;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .roadmap-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .roadmap-table td {
+        padding: 12px 5px;
+        border-bottom: 1px solid #333;
+    }
+
+    .post-link {
+        color: #eee;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+
+    .post-link:hover {
+        color: var(--accent);
+    }
+
+    /* Quote Box */
+    .quote-box {
+        margin-top: 30px;
+        padding: 25px;
+        background: linear-gradient(135deg, #2e2e33, #1e1e22);
+        border-radius: 20px;
+        text-align: center;
+        border: 1px solid #333;
+    }
+</style>
+
+<div class="modern-portfolio">
+    <header class="hero-section">
+        <h1 class="hero-title">🌐 Lập Trình: Di Sản Của Những Vị Thần Sáng Tạo</h1>
+        <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto;">
+            Chào mừng bạn đến với blog của Bảo. Đằng sau mỗi dòng code chúng ta gõ hôm nay là trí tuệ của những bộ óc vĩ đại nhất lịch sử công nghệ.
+        </p>
+    </header>
+
+    <div class="content-grid">
+        <main class="main-content">
             
-            <table style="width: 100%; border-collapse: collapse; margin-top: 20px; color: #ddd; font-size: 0.95rem;">
-                <thead>
-                    <tr style="text-align: left; border-bottom: 1px solid #444;">
-                        <th style="padding: 10px 5px;">Chủ đề</th>
-                        <th style="padding: 10px 5px;">Bài học</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td style="padding: 12px 5px; color: #f89820; font-weight: bold;">Java</td><td><a href="/posts/bai-1/" style="color: #eee; text-decoration: none;">Bài 1: Cài đặt JDK</a></td></tr>
-                    <tr><td style="padding: 12px 5px; color: #f89820; font-weight: bold;">Java</td><td><a href="/posts/bai-2/" style="color: #eee; text-decoration: none;">Bài 2: Biến & Data</a></td></tr>
-                    <tr><td style="padding: 12px 5px; color: #f89820; font-weight: bold;">Java</td><td><a href="/posts/bai-3/" style="color: #eee; text-decoration: none;">Bài 3: Điều khiển</a></td></tr>
-                    <tr style="border-top: 1px solid #333;"><td style="padding: 12px 5px; color: #00abff; font-weight: bold;">JS</td><td><a href="/posts/bai-6/" style="color: #eee; text-decoration: none;">Bài 6: JS Cơ bản</a></td></tr>
-                    <tr><td style="padding: 12px 5px; color: #00abff; font-weight: bold;">JS</td><td><a href="/posts/bai-7/" style="color: #eee; text-decoration: none;">Bài 7: Thao tác DOM</a></td></tr>
-                    <tr><td style="padding: 12px 5px; color: #00abff; font-weight: bold;">JS</td><td><a href="/posts/bai-8/" style="color: #eee; text-decoration: none;">Bài 8: Bất đồng bộ</a></td></tr>
-                    <tr><td style="padding: 12px 5px; color: #00abff; font-weight: bold;">JS</td><td><a href="/posts/bai-9/" style="color: #eee; text-decoration: none;">Bài 9: Fullstack Path</a></td></tr>
-                </tbody>
-            </table>
+            <section class="story-card" style="border-left: 6px solid var(--java-color);">
+                <h2 class="section-title" style="color: var(--java-color);">☕ Java: Pháo Đài Vĩnh Cửu & James Gosling</h2>
+                <div style="display: flex; gap: 20px; align-items: flex-start; margin: 25px 0; flex-wrap: wrap;">
+                    <img src="/images/javator.jpg" alt="James Gosling" class="author-img" style="border: 2px solid var(--java-color);">
+                    <div style="flex: 1; min-width: 250px;">
+                        <p style="margin-top: 0;"><strong>Vị kiến trúc sư trưởng:</strong> Vào đầu những năm 90, tại Sun Microsystems, <strong>James Gosling</strong> đã tạo ra Java với triết lý <em>"Write Once, Run Anywhere"</em>.</p>
+                        <p>Từ những dòng code đầu tiên để điều khiển tivi, James Gosling đã vô tình tạo ra một "con quái vật" thống trị toàn bộ hệ thống ngân hàng toàn cầu.</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(251, 146, 60, 0.05); padding: 20px; border-radius: 15px; border-left: 4px solid var(--java-color);">
+                    <h4 style="margin-top: 0; color: var(--java-color);">✨ Tứ Trụ OOP - Bản Thiết Kế Của James</h4>
+                    <p style="margin-bottom: 0;">James Gosling đưa triết lý sống vào code: <strong>Đóng gói</strong> (bảo mật), <strong>Kế thừa</strong> (di sản), <strong>Đa hình</strong> (thích nghi) và <strong>Trừu tượng</strong> (bản chất).</p>
+                </div>
+            </section>
 
-            <div style="margin-top: 25px; text-align: right;">
-                <a href="/posts/" style="text-decoration: none; font-size: 0.9em; color: #f89820; font-weight: bold;">→ Xem tất cả bài đăng</a>
+            <section class="story-card" style="border-left: 6px solid var(--js-color);">
+                <h2 class="section-title" style="color: var(--js-color);">⚡ JavaScript: 10 Ngày Định Mệnh Của Brendan Eich</h2>
+                <div style="display: flex; gap: 20px; align-items: flex-start; margin: 25px 0; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <p style="margin-top: 0;"><strong>Huyền thoại 10 ngày:</strong> Năm 1995, <strong>Brendan Eich</strong> đã tạo ra bản sơ thảo đầu tiên của JavaScript chỉ trong vòng đúng 10 ngày. Một kỳ tích mà đến nay vẫn gọi là "Ma thuật".</p>
+                        <p>Chính sự linh hoạt vượt thời gian của Brendan đã giúp JS trở thành ngôn ngữ duy nhất thống trị hoàn toàn mọi trình duyệt web trên trái đất.</p>
+                    </div>
+                    <img src="/images/jstor.jpg" alt="Brendan Eich" class="author-img" style="border: 2px solid var(--js-color);">
+                </div>
+                <p>Brendan Eich giờ đây đã đi theo những dự án khác như Brave, nhưng "đứa con" JavaScript của ông đang tiến vào kỷ nguyên AI và Web3.</p>
+            </section>
+
+        </main>
+
+        <aside class="sidebar-roadmap">
+            <div class="widget">
+                <h3 style="margin-top: 0; color: #fff; text-align: center; border-bottom: 3px solid var(--accent); padding-bottom: 12px; font-size: 1.4rem;">🆕 Bài đăng mới nhất</h3>
+                
+                <table class="roadmap-table">
+                    <tbody>
+                        <tr>
+                            <td style="color: var(--java-color); font-weight: bold; width: 50px;">JAVA</td>
+                            <td><a href="/posts/bai-1/" class="post-link">Bài 1: Lập trình Socket cơ bản</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--java-color); font-weight: bold;">JAVA</td>
+                            <td><a href="/posts/bai-2/" class="post-link">Bài 2: Quản lý đa luồng</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--java-color); font-weight: bold;">JAVA</td>
+                            <td><a href="/posts/bai-3/" class="post-link">Bài 3: Kết nối MySQL JDBC</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--js-color); font-weight: bold;">JS</td>
+                            <td><a href="/posts/bai-6/" class="post-link">Bài 1: Ma thuật JavaScript</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--js-color); font-weight: bold;">JS</td>
+                            <td><a href="/posts/bai-7/" class="post-link">Bài 2: Thao tác thực tại DOM</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--js-color); font-weight: bold;">JS</td>
+                            <td><a href="/posts/bai-8/" class="post-link">Bài 3: Bất đồng bộ xuyên không</a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
-
+            
+            <div class="quote-box">
+                <p style="margin: 0; font-size: 0.9rem; color: #888; font-style: italic;">"Coding is not just about logic, it's about building a legacy."</p>
+                <p style="margin: 10px 0 0 0; font-weight: bold; color: var(--accent); letter-spacing: 1px;">- BẢO DEVELOPER -</p>
+            </div>
+        </aside>
     </div>
 </div>

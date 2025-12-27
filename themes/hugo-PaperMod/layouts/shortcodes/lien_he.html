@@ -1,0 +1,152 @@
+<style>
+    .simple-contact {
+        --gray-text: #71717a;
+        --border-color: #27272a;
+        --accent: #00abff;
+        
+        max-width: 900px;
+        margin: 100px auto;
+        padding: 0 20px;
+        font-family: 'Inter', system-ui, sans-serif;
+        color: #ffffff;
+    }
+
+    /* Tiêu đề mỏng và thanh lịch */
+    .simple-contact h1 {
+        font-size: 3.5rem;
+        font-weight: 200;
+        margin-bottom: 60px;
+        letter-spacing: -2px;
+    }
+
+    .simple-contact h1 b {
+        font-weight: 800;
+        color: var(--accent);
+    }
+
+    /* Bố cục Grid tối giản */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 40px;
+    }
+
+    /* Danh sách liên hệ không icon, chỉ có chữ */
+    .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .contact-item {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.2s;
+    }
+
+    .contact-item label {
+        display: block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: var(--gray-text);
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+
+    .contact-item span {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+    .contact-item:hover span {
+        color: var(--accent);
+    }
+
+    /* Form chỉ gồm các dòng kẻ ngang */
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .form-field {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    .form-field input, .form-field textarea {
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 1rem;
+        outline: none;
+        padding: 5px 0;
+    }
+
+    .form-field input::placeholder {
+        color: #3f3f46;
+    }
+
+    .btn-submit {
+        align-self: flex-start;
+        background: #fff;
+        color: #000;
+        border: none;
+        padding: 12px 30px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+        background: var(--accent);
+        color: #fff;
+    }
+
+    @media (max-width: 650px) {
+        .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+        .simple-contact h1 { font-size: 2.5rem; }
+    }
+</style>
+
+<div class="simple-contact">
+    <h1>Liên hệ với <b>Bảo.</b></h1>
+
+    <div class="contact-grid">
+        <div class="contact-list">
+            <a href="https://github.com/laptrinhcungbao" class="contact-item" target="_blank">
+                <label>GitHub</label>
+                <span>github.com/laptrinhcungbao</span>
+            </a>
+            <a href="#" class="contact-item" target="_blank">
+                <label>Facebook</label>
+                <span>Bảo Võ</span>
+            </a>
+            <a href="mailto:volegiabao04082004@gmail.com" class="contact-item">
+                <label>Email</label>
+                <span>volegiabao04082004@gmail.com</span>
+            </a>
+            <a href="#" class="contact-item" target="_blank">
+                <label>Telegram</label>
+                <span>@baovo_dev</span>
+            </a>
+        </div>
+
+        <form class="contact-form">
+            <div class="form-field">
+                <input type="text" placeholder="Tên của bạn">
+            </div>
+            <div class="form-field">
+                <input type="email" placeholder="Địa chỉ Email">
+            </div>
+            <div class="form-field">
+                <textarea rows="3" placeholder="Lời nhắn..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Gửi tin</button>
+        </form>
+    </div>
+</div>

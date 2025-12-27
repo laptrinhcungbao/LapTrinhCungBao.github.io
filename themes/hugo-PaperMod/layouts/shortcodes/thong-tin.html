@@ -1,0 +1,205 @@
+<style>
+    :root {
+        --b-primary: #00abff;
+        --b-sub: #94a3b8;
+        --b-bg-card: rgba(255, 255, 255, 0.03);
+    }
+
+    .bao-profile-container {
+        font-family: 'Inter', system-ui, sans-serif;
+        color: #e2e8f0;
+        max-width: 900px;
+        margin: 60px auto;
+        padding: 0 20px;
+    }
+
+    /* Layout chính chia 2 cột */
+    .profile-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 50px;
+        align-items: start;
+    }
+
+    /* Cột bên trái: Ảnh & Quick Info */
+    .profile-aside {
+        text-align: center;
+        position: sticky;
+        top: 100px;
+    }
+
+ .avatar-wrapper {
+        width: 240px;
+        height: 240px;
+        margin: 0 auto 30px;
+        position: relative;
+        /* Điều chỉnh lại thông số để phần trên ít bị bo hơn, tránh mất đỉnh đầu */
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; 
+        background: var(--b-primary);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 15px 35px rgba(0, 171, 255, 0.2);
+        border: 2px solid var(--b-primary);
+    }
+
+    .avatar-wrapper:hover {
+        /* Khi hover sẽ tròn đều để nhìn rõ toàn bộ khuôn mặt */
+        border-radius: 50%;
+        transform: scale(1.02);
+    }
+
+    .avatar-wrapper img {
+        width: 100%;
+        height: 100%;
+        /* object-fit: cover kết hợp với scale nhẹ để ảnh lùi lại một chút */
+        object-fit: cover;
+        transform: scale(1.1); 
+        /* Căn chỉnh ảnh dịch xuống một chút nếu đỉnh đầu vẫn bị sát quá */
+        object-position: center 20%; 
+        transition: all 0.5s ease;
+    }
+
+    .avatar-wrapper:hover img {
+        transform: scale(1);
+    }
+
+    .side-name {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 5px;
+    }
+
+    .side-tagline {
+        color: var(--b-primary);
+        font-family: monospace;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    /* Cột bên phải: Nội dung chi tiết */
+    .profile-main h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    .bio-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #cbd5e1;
+        margin-bottom: 30px;
+    }
+
+    .exp-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .exp-card {
+        background: var(--b-bg-card);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .exp-card small {
+        color: var(--b-sub);
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+
+    .exp-card p {
+        margin: 5px 0 0;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    /* Sticker/Hobby */
+    .hobby-bar {
+        margin-top: 40px;
+        padding: 20px;
+        background: rgba(251, 191, 36, 0.05);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .hobby-icon {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        .profile-layout { grid-template-columns: 1fr; }
+        .profile-aside { position: relative; top: 0; }
+        .brand-side h1 { font-size: 4rem; }
+    }
+</style>
+
+<div class="bao-profile-container">
+    <div class="profile-layout">
+        
+        <aside class="profile-aside">
+            <div class="avatar-wrapper">
+                <img src="/images/bao.jpg" alt="Võ Lê Gia Bảo" onerror="this.src='https://ui-avatars.com/api/?name=Gia+Bao&background=00abff&color=fff&size=256'">
+            </div>
+            <div class="side-name">Gia Bảo.</div>
+            <div class="side-tagline">@baovo_dev</div>
+            
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
+                <span title="Vui vẻ" style="cursor:help">😊</span>
+                <span title="Chạy bộ" style="cursor:help">🏃‍♂️</span>
+                <span title="Lập trình" style="cursor:help">💻</span>
+            </div>
+        </aside>
+
+        <main class="profile-main">
+            <h2>Chào bạn, mình là Bảo!</h2>
+            
+            <div class="bio-text">
+                Mình là <b>Võ Lê Gia Bảo</b>, sinh viên khoa <b>Công nghệ Phần mềm</b> tại Đại học Công nghệ TP.HCM (HUTECH). 
+                Với tinh thần luôn lạc quan và yêu đời, mình tin rằng mọi vấn đề phức tạp trong code đều có thể giải quyết bằng một tâm thế vui vẻ và sự kiên trì.
+            </div>
+
+            <div class="exp-grid">
+                <div class="exp-card">
+                    <small>Trường học</small>
+                    <p>HUTECH University</p>
+                </div>
+                <div class="exp-card">
+                    <small>Chuyên ngành</small>
+                    <p>Software Engineering</p>
+                </div>
+                <div class="exp-card">
+                    <small>Kỹ năng</small>
+                    <p>Full-stack Basic</p>
+                </div>
+                <div class="exp-card">
+                    <small>Tính cách</small>
+                    <p>Lạc quan & Thích giúp đỡ</p>
+                </div>
+            </div>
+
+            <div class="hobby-bar">
+                <div class="hobby-icon">🏃‍♂️</div>
+                <div>
+                    <strong style="color: #fbbf24; display: block;">Sở thích đặc biệt: Chạy bộ</strong>
+                    <span style="font-size: 0.9rem; color: var(--b-sub);">Chạy bộ giúp mình rèn luyện sự bền bỉ và giữ tinh thần minh mẫn để giải quyết Bug.</span>
+                </div>
+            </div>
+
+            <p style="margin-top: 40px; font-style: italic; color: var(--b-sub);">
+                "Lập trình là hành trình sáng tạo, và mình rất hạnh phúc khi được chia sẻ hành trình đó cùng bạn qua chiếc blog nhỏ này."
+            </p>
+        </main>
+
+    </div>
+</div>

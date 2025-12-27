@@ -1,8 +1,8 @@
 ---
-title: "Bài 5: Bắt đầu với Java Servlet"
-date: 2025-12-26T21:15:00+07:00
+title: "Xử lý File & Stream trong Java - Làm chủ báo cáo dữ liệu"
 draft: false
 categories: ["Java"]
-summary: "Nền tảng xây dựng ứng dụng Web phía máy chủ với Java Servlet và HTTP Request."
+summary: "Hướng dẫn chi tiết cách Java đọc và ghi dữ liệu ra các định dạng file phổ biến như TXT, CSV và Excel."
 ---
-Servlet là công nghệ nền tảng để xử lý các yêu cầu HTTP từ trình duyệt gửi lên máy chủ Java.
+
+{{< bai5_layout >}}

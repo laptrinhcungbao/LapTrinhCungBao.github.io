@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Bài 6: Làm chủ biến và kiểu dữ liệu trong JavaScript | Lập Trình Cùng Bảo</title>
+<title>Làm chủ biến và kiểu dữ liệu trong JavaScript | Lập Trình Cùng Bảo</title>
 <meta name="keywords" content="">
-<meta name="description" content="Tìm hiểu về biến, kiểu dữ liệu và cách vận hành của ngôn ngữ lập trình phổ biến nhất thế giới.">
+<meta name="description" content="Tìm hiểu sự khác biệt giữa var, let, const và các kiểu dữ liệu linh hoạt trong JavaScript.">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/bai-6/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.74193e1612067f5fc07f882e6188e4e4c5ad453d7d39f0a2e9427af822397dfe.css" integrity="sha256-dBk&#43;FhIGf1/Af4guYYjk5MWtRT19OfCi6UJ6&#43;CI5ff4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4d1f84097cfc5ec1222cf411c12430165b2555fdd442156c1e39e3d311603744.css" integrity="sha256-TR&#43;ECXz8XsEiLPQRwSQwFlslVf3UQhVsHjnj0xFgN0Q=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -74,6 +74,21 @@
                     <span>Bài đăng</span>
                 </a>
             </li>
+            <li>
+                <a href="http://localhost:1313/tips" title="Tip học tập">
+                    <span>Tip học tập</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="Thông tin của Bảo">
+                    <span>Thông tin của Bảo</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact" title="Liên hệ">
+                    <span>Liên hệ</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -83,16 +98,185 @@
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Bài 6: Làm chủ biến và kiểu dữ liệu trong JavaScript
+      Làm chủ biến và kiểu dữ liệu trong JavaScript
     </h1>
-    <div class="post-meta"><span title='2025-12-26 21:20:00 +0700 +07'>December 26, 2025</span>
+    <div class="post-meta">
 
 </div>
   </header> 
-  <div class="post-content"><p>JavaScript là linh hồn của website. Chúng ta sử dụng <code>let</code>, <code>const</code> để khai báo biến và thực hiện các phép toán logic.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bảo&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Chào mừng </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> đến với thế giới JS!`</span>);
-</span></span></code></pre></div>
+  <div class="post-content"><style>
+   .post-single .post-header h1, 
+    h1.post-title, 
+    .post-header h1 { 
+        color: #00abff !important; 
+    }
+    .post-single {
+        line-height: 1.9;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        text-align: justify;
+    }
+    .js-container {
+        background: #1e293b;
+        border-radius: 16px;
+        padding: 30px;
+        margin: 30px 0;
+        border: 1px solid #00abff;
+    }
+    .var-compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+        margin: 25px 0;
+    }
+    .var-card {
+        background: #0f172a;
+        padding: 20px;
+        border-radius: 12px;
+        border-top: 4px solid #00abff;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+    .var-card:hover { transform: translateY(-5px); }
+    .code-js {
+        background: #0f172a;
+        padding: 18px;
+        border-radius: 10px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.95rem;
+        color: #e2e8f0;
+        border-left: 5px solid #00abff;
+        margin: 20px 0;
+        box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+    .badge-const { background: #ef4444; color: white; }
+    .badge-let { background: #3b82f6; color: white; }
+    .highlight-yellow { color: #f7df1e; font-weight: bold; }
+    .note-box {
+        background: rgba(247, 223, 30, 0.1);
+        border: 1px solid rgba(247, 223, 30, 0.3);
+        padding: 20px;
+        border-radius: 12px;
+        margin: 25px 0;
+    }
+</style>
+
+<article class="post-single">
+    <header class="post-header" style="margin-bottom: 40px;">
+        <div class="post-meta" style="color: #94a3b8; font-size: 0.9rem;">
+            <span>📅 26 Tháng 12, 2025</span> • 
+            <span>📁 <a href="/posts/cate/?tab=js" style="color: #f7df1e; text-decoration: none !important; font-weight: bold;">JavaScript</a></span>
+        </div>
+    </header>
+
+    <p>Chào mừng các bạn đến với thế giới của JavaScript! Nếu ở các bài trước chúng ta đã thấy Java nghiêm ngặt và quy củ như thế nào, thì <span class="highlight-yellow">JavaScript (JS)</span> lại giống như một nghệ sĩ tự do. Nó là ngôn ngữ phổ biến nhất thế giới hiện nay, đứng sau mọi tương tác trên trình duyệt mà bạn thấy hàng ngày.</p>
+
+    <h2 style="color: #00abff; margin-top: 40px;">1. Sự Khác Biệt Giữa var, let và const (Scope & Hoisting)</h2>
+    <p>Trong JS, cách bạn khai báo biến cực kỳ quan trọng vì nó quyết định "vòng đời" của biến đó. Hãy cùng phân tích sâu hơn:</p>
+
+    <div class="var-compare">
+        <div class="var-card">
+            <span class="badge" style="background: #64748b;">var</span>
+            <p style="font-size: 0.9rem;">Có phạm vi <strong>Global/Function</strong>. Nó có cơ chế <em>Hoisting</em> (đưa khai báo lên đầu), dễ gây nhầm lẫn dữ liệu.</p>
+        </div>
+        <div class="var-card">
+            <span class="badge badge-let">let</span>
+            <p style="font-size: 0.9rem;">Có phạm vi <strong>Block Scope</strong> (trong cặp ngoặc <code>{}</code>). Đây là lựa chọn tốt nhất nếu biến cần thay đổi giá trị.</p>
+        </div>
+        <div class="var-card">
+            <span class="badge badge-const">const</span>
+            <p style="font-size: 0.9rem;">Cũng là <strong>Block Scope</strong> nhưng dành cho hằng số. Một khi đã gán là không thể thay đổi.</p>
+        </div>
+    </div>
+
+    
+
+    <div class="code-js">
+<pre style="margin: 0;">
+if (true) {
+    var globalVar = "Tôi ở khắp nơi";
+    let blockVar = "Tôi chỉ ở trong này thôi";
+}
+console.log(globalVar); // Chạy tốt
+console.log(blockVar);  // Lỗi! (Vì let bảo vệ biến trong block)</pre>
+    </div>
+
+    <h2 style="color: #00abff; margin-top: 40px;">2. Các Kiểu Dữ Liệu Nguyên Thủy (Primitives)</h2>
+    <p>JS là ngôn ngữ <em>Dynamically Typed</em>, nghĩa là một biến có thể giữ bất kỳ kiểu dữ liệu nào tại các thời điểm khác nhau. Có 5 kiểu cơ bản bạn cần nhớ:</p>
+
+    <ul>
+        <li><span class="highlight-yellow">Number:</span> Không phân biệt số nguyên hay số thực (int/double như Java).</li>
+        <li><span class="highlight-yellow">String:</span> Có thể dùng nháy đơn <code>'</code>, nháy kép <code>"</code> hoặc <code>`</code> (Backticks).</li>
+        <li><span class="highlight-yellow">Boolean:</span> Chỉ có <code>true</code> hoặc <code>false</code>.</li>
+        <li><span class="highlight-yellow">Undefined:</span> Biến đã khai báo nhưng chưa có giá trị.</li>
+        <li><span class="highlight-yellow">Null:</span> Đại diện cho một giá trị "không tồn tại" được gán một cách chủ đích.</li>
+    </ul>
+
+    <div class="note-box">
+        <strong>💡 Mẹo nhỏ:</strong> Sử dụng <code>typeof</code> để kiểm tra kiểu dữ liệu của một biến nhanh chóng.
+        <code style="display: block; margin-top: 10px; color: #00abff;">console.log(typeof "Bảo"); // "string"</code>
+    </div>
+
+    <h2 style="color: #00abff; margin-top: 40px;">3. Kiểu Dữ Liệu Phức Tạp: Sức Mạnh Của Object</h2>
+    <p>Gần như mọi thứ trong JavaScript đều là <strong>Object</strong>. Đây là cấu trúc dữ liệu theo dạng <code>Key: Value</code> cực kỳ linh hoạt.</p>
+
+    
+
+    <div class="code-js">
+<pre style="margin: 0;">
+const profile = {
+    username: "bao_dev",
+    stars: 500,
+    isOnline: true,
+    // Method (Hàm bên trong object)
+    sayHi: function() { return "Chào anh em!"; }
+};
+
+console.log(profile.username); // Truy cập bằng dấu chấm</pre>
+    </div>
+
+    <h2 style="color: #00abff; margin-top: 40px;">4. Template Literals - Cách Viết Chuỗi Hiện Đại</h2>
+    <p>Thay vì nối chuỗi bằng dấu cộng <code>+</code> cực kỳ mệt mỏi như ngày xưa, JS hiện đại sử dụng dấu huyền (backticks) giúp code sạch sẽ hơn rất nhiều.</p>
+
+    <div class="code-js">
+<pre style="margin: 0;">
+const name = "Bảo";
+const task = "JavaScript";
+
+// Cách cũ: "Chào " + name + ", bạn đang học " + task
+// Cách mới (Xịn hơn):
+const message = `Chào ${name}, bạn đang học ${task}!`;
+console.log(message);</pre>
+    </div>
+
+    <h2 style="color: #00abff; margin-top: 40px;">5. Ép Kiểu & Cạm Bẫy So Sánh</h2>
+    <p>JavaScript rất hay tự động ép kiểu. Hãy nhớ quy tắc: Luôn sử dụng <code>===</code> (so sánh nghiêm ngặt) thay vì <code>==</code> để tránh những lỗi không đáng có.</p>
+
+    <div style="background: #0f172a; padding: 20px; border-radius: 12px; border-left: 5px solid #ef4444; margin-top: 20px;">
+        <code style="color: #94a3b8;">5 == "5"  // true (Ép kiểu - Nguy hiểm!)</code><br>
+        <code style="color: #10b981;">5 === "5" // false (Nghiêm ngặt - Khuyên dùng)</code>
+    </div>
+
+    <h2 style="color: #00abff; margin-top: 40px;">6. Tổng kết</h2>
+    <p>Nắm vững cách vận hành của biến và dữ liệu là nền móng để bạn tiến xa hơn tới xử lý mảng (Arrays), Hàm (Functions) và các kỹ thuật bất đồng bộ. JavaScript không khó, cái khó là hiểu được "tính cách" linh hoạt của nó!</p>
+
+    <hr style="border: 0; border-top: 1px solid #334155; margin: 40px 0;">
+
+    <p style="margin-top: 40px; font-weight: bold; display: flex; flex-wrap: wrap; gap: 18px;">
+        <a href="/" style="color: #00abff; text-decoration: none !important;">#LậpTrìnhCùngBảo</a>
+        <a href="/posts/bai-6/" style="color: #00abff; text-decoration: none !important;">#JavaScriptMastery</a>
+        <a href="/posts/cate/?tab=js" style="color: #00abff; text-decoration: none !important;">#ModernJS</a>
+    </p>
+</article>
+
 
   </div>
 

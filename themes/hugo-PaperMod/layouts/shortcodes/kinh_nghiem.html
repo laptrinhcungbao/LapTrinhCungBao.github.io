@@ -1,0 +1,172 @@
+<style>
+    .learning-adventure {
+        color: #cbd5e1;
+        line-height: 1.8;
+        font-family: 'Be Vietnam Pro', sans-serif;
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    /* Tiêu đề kiểu phá cách */
+    .fun-header {
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    .fun-header h1 {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        line-height: 1;
+    }
+
+    .fun-header .highlight-box {
+        background: #fbbf24;
+        color: #000;
+        padding: 5px 15px;
+        display: inline-block;
+        transform: rotate(-2deg);
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    /* Các khối nội dung kiểu "Nhật ký vượt khó" */
+    .story-card {
+        background: #1e293b;
+        border-radius: 24px;
+        padding: 40px;
+        margin-bottom: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .story-card::before {
+        content: attr(data-step);
+        position: absolute;
+        top: -20px;
+        right: -10px;
+        font-size: 10rem;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.03);
+    }
+
+    .story-card h2 {
+        color: #00abff;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Alert đùa vui */
+    .funny-alert {
+        background: rgba(239, 68, 68, 0.1);
+        border-left: 4px solid #ef4444;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 10px 10px 0;
+        font-style: italic;
+        color: #fca5a5;
+    }
+
+    .encouragement-box {
+        background: linear-gradient(135deg, #00abff 0%, #00ffcc 100%);
+        color: #0b1120;
+        padding: 30px;
+        border-radius: 20px;
+        font-weight: bold;
+        text-align: center;
+        margin: 50px 0;
+    }
+
+    .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .pill {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        color: #94a3b8;
+    }
+
+    .avatar-quote {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-top: 40px;
+        padding: 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .avatar-placeholder {
+        width: 60px;
+        height: 60px;
+        background: #00abff;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+</style>
+
+<div class="learning-adventure">
+    <header class="fun-header">
+        <h1>CHUYỆN CỦA <br><span style="color: #00abff;">KẺ KHÔNG BIẾT GÌ</span></h1>
+        <div class="highlight-box">Học lập trình không khó, chỉ là hơi "nhức não" thôi!</div>
+    </header>
+
+    <div class="story-card" data-step="1">
+        <h2>🙄 Thuở mới bắt đầu</h2>
+        <p>Thú thật với các bạn, hồi mới nhìn vào mấy dòng code Java đầu tiên, mình kiểu: <i>"Cái quái gì đây? Sao lại viết chữ rồi thêm dấu chấm phẩy lung tung thế này?"</i>. Lúc đó mình cảm giác như đang đọc tiếng ngoài hành tinh vậy.</p>
+        
+        <div class="funny-alert">
+            Cảnh báo: Có những ngày mình ngồi nhìn màn hình 2 tiếng chỉ để phát hiện mình viết sai chữ "String" thành "Sting" (nước tăng lực).
+        </div>
+        
+        <p>Nhưng bạn biết không? Đừng sợ cảm giác "ngu ngơ" đó. Ai mới bắt đầu cũng giống bạn cả thôi. Quan trọng là mình không bỏ cuộc ngay lúc đó.</p>
+    </div>
+
+    <div class="story-card" data-step="2">
+        <h2>🛠️ Kinh nghiệm "xương máu"</h2>
+        <p>Sau một thời gian "ăn ngủ" cùng lỗi, mình nhận ra bí kíp không nằm ở đâu xa xôi:</p>
+        <ul style="padding-left: 20px;">
+            <li><b>Đừng học thuộc:</b> Code không phải bài thơ, đừng cố học thuộc lòng. Hãy hiểu cơ chế.</li>
+            <li><b>Làm sai là chuyện bình thường:</b> Càng nhiều lỗi (bug), bạn càng nhanh giỏi. Thật đấy!</li>
+            <li><b>Tự tay gõ lại:</b> Đừng chỉ nhìn video rồi gật đầu. Hãy để đôi tay bạn cảm nhận từng phím bấm.</li>
+        </ul>
+        <div class="pill-list">
+            <span class="pill">#Gõ_Đi_Đừng_Sợ</span>
+            <span class="pill">#Lỗi_Là_Bạn</span>
+            <span class="pill">#Java_Không_Khó</span>
+        </div>
+    </div>
+
+    <div class="encouragement-box">
+        🚀 "Nếu bạn cảm thấy mệt mỏi, hãy nghỉ ngơi một chút rồi quay lại chiến tiếp. <br> Chứ đừng dừng lại luôn nhé, phí cả một bầu trời tương lai đấy!"
+    </div>
+
+    <div class="story-card" data-step="3">
+        <h2>🌩️ Vượt qua vùng an toàn</h2>
+        <p>Khi mình nhảy vào học Socket và Đa luồng, mọi thứ lại "mờ mịt" một lần nữa. Kiểu như vừa leo được cái đồi nhỏ thì thấy trước mặt là đỉnh Everest ấy. Nhưng khi đã thông suốt, bạn sẽ thấy thế giới này kết nối với nhau kỳ diệu lắm.</p>
+        <p><b>Lời khuyên:</b> Gặp kiến thức khó thì cứ bình tĩnh xé nhỏ nó ra mà học. Mỗi ngày một ít, "mưa dầm thấm lâu".</p>
+    </div>
+
+    <div class="avatar-quote">
+        <div class="avatar-placeholder" style="display:flex; align-items:center; justify-content:center; font-weight:bold; color:black;">Bảo</div>
+        <div>
+            <p style="margin: 0; font-weight: bold; color: #fff;">Lời nhắn từ Bảo:</p>
+            <p style="margin: 0; font-size: 0.95rem; color: #94a3b8;">Hồi xưa Bảo cũng không hiểu gì đâu, nên bạn cứ yên tâm nhé. Cứ kiên trì là tới đích hết!</p>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin: 60px 0;">
+        <p>Bạn có muốn chia sẻ "nỗi khổ" lúc mới học code với mình không?</p>
+        <a href="mailto:your@email.com" style="color: #00abff; font-weight: bold; text-decoration: none; border-bottom: 2px solid #00abff;">Gửi thư tâm sự cho Bảo 📩</a>
+    </div>
+</div>

@@ -18,7 +18,23 @@ theme = "hugo-PaperMod"
     name = "Trang chủ"
     url = "/"
     weight = 10
+
   [[menu.main]]
     name = "Bài đăng"
     url = "/posts/cate"
     weight = 20
+
+  [[menu.main]]
+    name = "Tip học tập"
+    url = "/tips" # Bạn có thể thay đổi đường dẫn này tùy theo cấu trúc file của bạn
+    weight = 30
+
+  [[menu.main]]
+    name = "Thông tin của Bảo"
+    url = "/about" # Đường dẫn đến trang giới thiệu bản thân
+    weight = 40
+
+  [[menu.main]]
+    name = "Liên hệ"
+    url = "/contact" # Đường dẫn đến trang liên hệ
+    weight = 50

@@ -1,0 +1,148 @@
+<style>
+    /* Dòng này sẽ tìm tiêu đề chính của trang và đổi màu */
+    .post-single .post-header h1, 
+    h1.post-title, 
+    .post-header h1 { 
+        color: #00abff !important; 
+    }
+
+    .post-single {
+        line-height: 1.9;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        text-align: justify;
+    }
+    .post-single {
+        line-height: 1.9;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        text-align: justify;
+    }
+    .db-card {
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
+        border: 1px solid #334155;
+        border-radius: 20px;
+        padding: 30px;
+        margin: 30px 0;
+    }
+    .step-box {
+        border-left: 4px solid #f89820;
+        background: rgba(248, 152, 32, 0.05);
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border-radius: 0 12px 12px 0;
+    }
+    .code-header {
+        background: #334155;
+        color: #fff;
+        padding: 8px 15px;
+        border-radius: 8px 8px 0 0;
+        font-size: 0.85rem;
+        font-family: monospace;
+        display: flex;
+        justify-content: space-between;
+    }
+    pre {
+        margin-top: 0 !important;
+        border-radius: 0 0 8px 8px !important;
+    }
+    .badge-mysql {
+        background: #00758f;
+        color: white;
+        padding: 2px 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+    }
+</style>
+
+<article class="post-single">
+    <header class="post-header" style="margin-bottom: 40px;">
+        <div class="post-meta" style="color: #94a3b8; font-size: 0.9rem;">
+            <span>📅 26 Tháng 12, 2025</span> • 
+            <span>📁 <a href="/posts/cate/" style="color: #60a5fa; text-decoration: none !important; font-weight: bold;">Java</a></span>
+        </div>
+    </header>
+
+    <p>Ở hai bài trước, chúng ta đã học cách tạo ra một Server mạnh mẽ có thể xử lý nhiều người dùng. Nhưng có một vấn đề: Khi bạn tắt Server, mọi dữ liệu (tin nhắn, thông tin người dùng) sẽ tan biến như mây khói. Để biến ứng dụng thành một hệ thống thực thụ, chúng ta cần **Cơ sở dữ liệu (Database)**.</p>
+    
+    <p><strong>JDBC (Java Database Connectivity)</strong> chính là bộ thư viện tiêu chuẩn giúp Java có thể nói chuyện được với MySQL, PostgreSQL hay SQL Server.</p>
+
+    
+
+    <h2 style="color: #60a5fa; margin-top: 40px;">1. Quy trình 4 bước "Thần thánh"</h2>
+    <p>Để lấy được dữ liệu từ MySQL lên Java, chúng ta luôn đi qua một lộ trình cố định. Hãy ghi nhớ sơ đồ này:</p>
+
+    <div class="db-card">
+        <div class="step-box">
+            <strong>Bước 1: Load Driver</strong> - Khai báo cho Java biết bạn đang dùng MySQL (<code>mysql-connector-java</code>).
+        </div>
+        <div class="step-box" style="border-left-color: #60a5fa;">
+            <strong>Bước 2: Create Connection</strong> - Thiết lập "đường ống" nối tới Database thông qua URL, Username và Password.
+        </div>
+        <div class="step-box" style="border-left-color: #10b981;">
+            <strong>Bước 3: Execute Query</strong> - Gửi lệnh SQL (Select, Insert, Update) qua đường ống.
+        </div>
+        <div class="step-box" style="border-left-color: #a78bfa;">
+            <strong>Bước 4: Process Result</strong> - Nhận kết quả trả về và hiển thị lên màn hình.
+        </div>
+    </div>
+
+    <h2 style="color: #60a5fa; margin-top: 40px;">2. Triển khai mã nguồn thực tế</h2>
+    <p>Trong ví dụ này, mình sẽ thực hiện truy vấn bảng <code>students</code>. Lưu ý cách sử dụng <strong>Try-with-resources</strong> để tự động đóng kết nối, tránh lãng phí tài nguyên.</p>
+
+    <div class="code-header">
+        <span>StudentManager.java</span>
+        <span class="badge-mysql">MySQL 8.0</span>
+    </div>
+<pre style="background: #1e293b; padding: 20px; border: 1px solid #334155; color: #e2e8f0; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;">
+import java.sql.*;
+
+public class StudentManager {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/school_db";
+        String user = "root";
+        String pass = "123456"; // Thay mật khẩu của bạn
+
+        String query = "SELECT id, name, email FROM students";
+
+        try (Connection conn = DriverManager.getConnection(url, user, pass);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            System.out.println("LOG: Connected to MySQL successfully!");
+            
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                
+                System.out.printf("STUDENT [%d]: %s - %s\n", id, name, email);
+            }
+        } catch (SQLException e) {
+            System.err.println("DB ERROR: " + e.getMessage());
+        }
+    }
+}</pre>
+
+    <h2 style="color: #60a5fa; margin-top: 40px;">3. Những lưu ý "Xương máu"</h2>
+    <ul style="margin-left: 20px; list-style-type: disc;">
+        <li style="margin-bottom: 15px;"><strong>Thư viện Connector:</strong> Bạn phải tải file <code>mysql-connector-j.jar</code> và add vào dự án (hoặc dùng Maven/Gradle). Nếu thiếu, bạn sẽ gặp lỗi <code>ClassNotFoundException</code>.</li>
+        <li><strong>SQL Injection:</strong> Tuyệt đối không cộng chuỗi trực tiếp vào câu lệnh SQL. Hãy sử dụng <code>PreparedStatement</code> để bảo mật.</li>
+        <li><strong>Port mặc định:</strong> MySQL luôn chạy ở cổng <strong>3306</strong>, hãy đảm bảo bạn không đổi nó hoặc bị tường lửa chặn.</li>
+    </ul>
+
+    
+
+    <h2 style="color: #60a5fa; margin-top: 40px;">4. Tổng kết</h2>
+    <p>JDBC là nền tảng của mọi framework sau này như Hibernate hay Spring Data JPA. Hiểu rõ JDBC giúp bạn kiểm soát hoàn toàn cách dữ liệu được lưu trữ và truy xuất.</p>
+    
+    <p>Ở bài tiếp theo, Bảo sẽ hướng dẫn các bạn **Kết hợp Socket + JDBC**: Làm sao để Client gửi tin nhắn và Server lưu ngay tin nhắn đó vào Database. Một ứng dụng Chat thực thụ đang dần hình thành!</p>
+
+    <hr style="border: 0; border-top: 1px solid #334155; margin: 40px 0;">
+
+    <p style="margin-top: 40px; font-weight: bold; display: flex; flex-wrap: wrap; gap: 18px;">
+        <a href="/" style="color: #60a5fa; text-decoration: none !important;">#LậpTrìnhCùngBảo</a>
+        <a href="/posts/bai-3/" style="color: #60a5fa; text-decoration: none !important;">#JavaJDBC</a>
+        <a href="/posts/cate" style="color: #60a5fa; text-decoration: none !important;">#MySQLConnection</a>
+    </p>
+</article>

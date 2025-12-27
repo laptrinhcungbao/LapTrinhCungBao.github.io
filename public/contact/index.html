@@ -5,20 +5,50 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Liên hệ | Lập Trình Cùng Bảo</title>
+<title>Lập Trình Cùng Bảo</title>
 <meta name="keywords" content="">
-<meta name="description" content="📫 Kết nối với Bảo
-Nếu bạn có bất kỳ thắc mắc nào về bài học hoặc muốn trao đổi về dự án, đừng ngần ngại liên hệ với mình qua:
+<meta name="description" content="
 
-GitHub: github.com/laptrinhcungbao
-Facebook: [Chèn link của bạn tại đây]
-Email: bao@example.com
-Địa chỉ: TP. Hồ Chí Minh, Việt Nam
 
-Rất vui được làm quen và hợp tác cùng các bạn!">
+    Liên hệ với Bảo.
+
+    
+        
+            
+                GitHub
+                github.com/laptrinhcungbao
+            
+            
+                Facebook
+                Bảo Võ
+            
+            
+                Email
+                volegiabao04082004@gmail.com
+            
+            
+                Telegram
+                @baovo_dev
+            
+        
+
+        
+            
+                
+            
+            
+                
+            
+            
+                
+            
+            Gửi tin
+        
+    
+">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/contact/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.74193e1612067f5fc07f882e6188e4e4c5ad453d7d39f0a2e9427af822397dfe.css" integrity="sha256-dBk&#43;FhIGf1/Af4guYYjk5MWtRT19OfCi6UJ6&#43;CI5ff4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4d1f84097cfc5ec1222cf411c12430165b2555fdd442156c1e39e3d311603744.css" integrity="sha256-TR&#43;ECXz8XsEiLPQRwSQwFlslVf3UQhVsHjnj0xFgN0Q=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -82,6 +112,21 @@ Rất vui được làm quen và hợp tác cùng các bạn!">
                     <span>Bài đăng</span>
                 </a>
             </li>
+            <li>
+                <a href="http://localhost:1313/tips" title="Tip học tập">
+                    <span>Tip học tập</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="Thông tin của Bảo">
+                    <span>Thông tin của Bảo</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact" title="Liên hệ">
+                    <span class="active">Liên hệ</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -91,21 +136,164 @@ Rất vui được làm quen và hợp tác cùng các bạn!">
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Liên hệ
+      
     </h1>
     <div class="post-meta">
 
 </div>
   </header> 
-  <div class="post-content"><h3 id="-kết-nối-với-bảo">📫 Kết nối với Bảo<a hidden class="anchor" aria-hidden="true" href="#-kết-nối-với-bảo">#</a></h3>
-<p>Nếu bạn có bất kỳ thắc mắc nào về bài học hoặc muốn trao đổi về dự án, đừng ngần ngại liên hệ với mình qua:</p>
-<ul>
-<li><strong>GitHub:</strong> <a href="https://github.com/laptrinhcungbao">github.com/laptrinhcungbao</a></li>
-<li><strong>Facebook:</strong> [Chèn link của bạn tại đây]</li>
-<li><strong>Email:</strong> <a href="mailto:bao@example.com">bao@example.com</a></li>
-<li><strong>Địa chỉ:</strong> TP. Hồ Chí Minh, Việt Nam</li>
-</ul>
-<p><em>Rất vui được làm quen và hợp tác cùng các bạn!</em></p>
+  <div class="post-content"><style>
+    .simple-contact {
+        --gray-text: #71717a;
+        --border-color: #27272a;
+        --accent: #00abff;
+        
+        max-width: 900px;
+        margin: 100px auto;
+        padding: 0 20px;
+        font-family: 'Inter', system-ui, sans-serif;
+        color: #ffffff;
+    }
+
+     
+    .simple-contact h1 {
+        font-size: 3.5rem;
+        font-weight: 200;
+        margin-bottom: 60px;
+        letter-spacing: -2px;
+    }
+
+    .simple-contact h1 b {
+        font-weight: 800;
+        color: var(--accent);
+    }
+
+     
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 40px;
+    }
+
+     
+    .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .contact-item {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.2s;
+    }
+
+    .contact-item label {
+        display: block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: var(--gray-text);
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+
+    .contact-item span {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+    .contact-item:hover span {
+        color: var(--accent);
+    }
+
+     
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .form-field {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    .form-field input, .form-field textarea {
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 1rem;
+        outline: none;
+        padding: 5px 0;
+    }
+
+    .form-field input::placeholder {
+        color: #3f3f46;
+    }
+
+    .btn-submit {
+        align-self: flex-start;
+        background: #fff;
+        color: #000;
+        border: none;
+        padding: 12px 30px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+        background: var(--accent);
+        color: #fff;
+    }
+
+    @media (max-width: 650px) {
+        .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+        .simple-contact h1 { font-size: 2.5rem; }
+    }
+</style>
+
+<div class="simple-contact">
+    <h1>Liên hệ với <b>Bảo.</b></h1>
+
+    <div class="contact-grid">
+        <div class="contact-list">
+            <a href="https://github.com/laptrinhcungbao" class="contact-item" target="_blank">
+                <label>GitHub</label>
+                <span>github.com/laptrinhcungbao</span>
+            </a>
+            <a href="#" class="contact-item" target="_blank">
+                <label>Facebook</label>
+                <span>Bảo Võ</span>
+            </a>
+            <a href="mailto:volegiabao04082004@gmail.com" class="contact-item">
+                <label>Email</label>
+                <span>volegiabao04082004@gmail.com</span>
+            </a>
+            <a href="#" class="contact-item" target="_blank">
+                <label>Telegram</label>
+                <span>@baovo_dev</span>
+            </a>
+        </div>
+
+        <form class="contact-form">
+            <div class="form-field">
+                <input type="text" placeholder="Tên của bạn">
+            </div>
+            <div class="form-field">
+                <input type="email" placeholder="Địa chỉ Email">
+            </div>
+            <div class="form-field">
+                <textarea rows="3" placeholder="Lời nhắn..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Gửi tin</button>
+        </form>
+    </div>
+</div>
 
 
   </div>

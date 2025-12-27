@@ -9,6 +9,7 @@
 <meta name="keywords" content="">
 <meta name="description" content="
   
+  
     
       ☕ Java
     
@@ -18,18 +19,21 @@
   
 
   
+  
     
-      📄 Bài 1: Cài đặt Java
-      📄 Bài 2: Đa luồng
-      📄 Bài 3: JDBC
-      📄 Bài 4: Swing
-      📄 Bài 5: Servlet
+      ☕ Bài 1: Lập trình Socket cơ bản với Java
+      ☕ Bài 2: Quản lý đa luồng (Multi-threading)
+      ☕ Bài 3:  Kết nối MySQL bằng JDBC
+      ☕ Bài 4: Tạo giao diện người dùng với Java Swing
+      ☕ Bài 5: Xử lý File & Stream trong Java
     
     
-      ⚡ Bài 6: JS Cơ bản
-      ⚡ Bài 7: DOM
-      ⚡ Bài 8: Async
-      ⚡ Bài 9: Fullstack
+    
+      ⚡ Bài 1: Làm chủ biến và kiểu dữ liệu trong JavaScript
+      ⚡ Bài 2: Thao tác với DOM bằng JavaScript
+      ⚡ Bài 3: Xử lý bất đồng bộ với Async và Await
+      ⚡ Bài 4: Quản lý bộ nhớ và Garbage Collection
+      ⚡ Bài 5: Quản lý bộ nhớ & Phá vỡ giới hạn Đơn luồng
     
   
 
@@ -39,7 +43,7 @@
 ">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/cate/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.74193e1612067f5fc07f882e6188e4e4c5ad453d7d39f0a2e9427af822397dfe.css" integrity="sha256-dBk&#43;FhIGf1/Af4guYYjk5MWtRT19OfCi6UJ6&#43;CI5ff4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4d1f84097cfc5ec1222cf411c12430165b2555fdd442156c1e39e3d311603744.css" integrity="sha256-TR&#43;ECXz8XsEiLPQRwSQwFlslVf3UQhVsHjnj0xFgN0Q=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -103,6 +107,21 @@
                     <span class="active">Bài đăng</span>
                 </a>
             </li>
+            <li>
+                <a href="http://localhost:1313/tips" title="Tip học tập">
+                    <span>Tip học tập</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="Thông tin của Bảo">
+                    <span>Thông tin của Bảo</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact" title="Liên hệ">
+                    <span>Liên hệ</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -118,48 +137,161 @@
 
 </div>
   </header> 
-  <div class="post-content"><div style="display: flex; gap: 30px; align-items: flex-start; margin-top: 20px;">
-  <div style="flex: 1; min-width: 150px; display: flex; flex-direction: column; gap: 15px; position: sticky; top: 20px;">
-    <button onclick="showPosts('java')" style="padding: 18px; border-radius: 15px; border: 2px solid #f89820; background: #fdf2e9; color: #f89820; font-size: 1.2rem; cursor: pointer; font-weight: bold;">
-      ☕ Java
+  <div class="post-content"><div class="custom-container">
+  
+  <div class="sidebar-menu">
+    <button class="tab-btn active" id="btn-java" onclick="showPosts('java')">
+      <span class="icon">☕</span> Java
     </button>
-    <button onclick="showPosts('js')" style="padding: 18px; border-radius: 15px; border: 2px solid #00abff; background: #eef7ff; color: #00abff; font-size: 1.2rem; cursor: pointer; font-weight: bold;">
-      ⚡ JavaScript
+    <button class="tab-btn" id="btn-js" onclick="showPosts('js')">
+      <span class="icon">⚡</span> JavaScript
     </button>
   </div>
 
-  <div style="flex: 3; display: flex; flex-direction: column; gap: 12px;">
-    <div id="java-list">
-      <a href="/posts/bai-1/" class="p-item">📄 Bài 1: Cài đặt Java</a>
-      <a href="/posts/bai-2/" class="p-item">📄 Bài 2: Đa luồng</a>
-      <a href="/posts/bai-3/" class="p-item">📄 Bài 3: JDBC</a>
-      <a href="/posts/bai-4/" class="p-item">📄 Bài 4: Swing</a>
-      <a href="/posts/bai-5/" class="p-item">📄 Bài 5: Servlet</a>
+  
+  <div class="content-list">
+    <div id="java-list" class="list-container">
+      <a href="/posts/bai-1/" class="p-item java-border">☕ Bài 1: Lập trình Socket cơ bản với Java</a>
+      <a href="/posts/bai-2/" class="p-item java-border">☕ Bài 2: Quản lý đa luồng (Multi-threading)</a>
+      <a href="/posts/bai-3/" class="p-item java-border">☕ Bài 3:  Kết nối MySQL bằng JDBC</a>
+      <a href="/posts/bai-4/" class="p-item java-border">☕ Bài 4: Tạo giao diện người dùng với Java Swing</a>
+      <a href="/posts/bai-5/" class="p-item java-border">☕ Bài 5: Xử lý File & Stream trong Java</a>
     </div>
-    <div id="js-list" style="display: none;">
-      <a href="/posts/bai-6/" class="p-item" style="border-color: #00abff;">⚡ Bài 6: JS Cơ bản</a>
-      <a href="/posts/bai-7/" class="p-item" style="border-color: #00abff;">⚡ Bài 7: DOM</a>
-      <a href="/posts/bai-8/" class="p-item" style="border-color: #00abff;">⚡ Bài 8: Async</a>
-      <a href="/posts/bai-9/" class="p-item" style="border-color: #00abff;">⚡ Bài 9: Fullstack</a>
+    
+    <div id="js-list" class="list-container" style="display: none;">
+      <a href="/posts/bai-6/" class="p-item js-border">⚡ Bài 1: Làm chủ biến và kiểu dữ liệu trong JavaScript</a>
+      <a href="/posts/bai-7/" class="p-item js-border">⚡ Bài 2: Thao tác với DOM bằng JavaScript</a>
+      <a href="/posts/bai-8/" class="p-item js-border">⚡ Bài 3: Xử lý bất đồng bộ với Async và Await</a>
+      <a href="/posts/bai-9/" class="p-item js-border">⚡ Bài 4: Quản lý bộ nhớ và Garbage Collection</a>
+      <a href="/posts/bai-10/" class="p-item js-border">⚡ Bài 5: Quản lý bộ nhớ & Phá vỡ giới hạn Đơn luồng</a>
     </div>
   </div>
 </div>
 
 <style>
-  .p-item { display: block; padding: 20px; background: #dfdfeb; border-radius: 12px; border: 1px solid #444; text-decoration: none; color: #000; margin-bottom: 10px; }
-  .p-item:hover { background: #cfcfe0; }
+   
+  .custom-container {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    margin-top: 30px;
+    font-family: 'Inter', sans-serif;
+  }
+
+   
+  .sidebar-menu {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: sticky;
+    top: 20px;
+  }
+
+  .tab-btn {
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1e293b;  
+    color: #94a3b8;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: left;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tab-btn:hover {
+    background: #334155;
+    color: #fff;
+  }
+
+   
+  .tab-btn.active#btn-java {
+    border-color: #f89820;
+    color: #f89820;
+    background: rgba(248, 152, 32, 0.1);
+  }
+
+  .tab-btn.active#btn-js {
+    border-color: #00abff;
+    color: #00abff;
+    background: rgba(0, 171, 255, 0.1);
+  }
+
+   
+  .content-list {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .p-item {
+    display: block;
+    padding: 18px 25px;
+    background: #1e293b;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+   
+  .java-border { border-left-color: #f89820; }
+  .js-border { border-left-color: #00abff; }
+
+  .p-item:hover {
+    background: #334155;
+    transform: translateX(8px);
+    color: #fff;
+  }
+
+   
+  @media (max-width: 768px) {
+    .custom-container { flex-direction: column; }
+    .sidebar-menu { width: 100%; position: static; flex-direction: row; }
+    .tab-btn { flex: 1; justify-content: center; }
+  }
 </style>
 
 <script>
   function showPosts(type) {
+    const javaList = document.getElementById('java-list');
+    const jsList = document.getElementById('js-list');
+    const btnJava = document.getElementById('btn-java');
+    const btnJs = document.getElementById('btn-js');
+
     if(type === 'java') {
-      document.getElementById('java-list').style.display = 'block';
-      document.getElementById('js-list').style.display = 'none';
+      javaList.style.display = 'block';
+      jsList.style.display = 'none';
+      btnJava.classList.add('active');
+      btnJs.classList.remove('active');
     } else {
-      document.getElementById('java-list').style.display = 'none';
-      document.getElementById('js-list').style.display = 'block';
+      javaList.style.display = 'none';
+      jsList.style.display = 'block';
+      btnJava.classList.remove('active');
+      btnJs.classList.add('active');
     }
   }
+
+  
+  window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab'); 
+
+    if (tab === 'js') {
+      showPosts('js');
+    } else {
+      showPosts('java'); 
+    }
+  };
 </script>
 
 

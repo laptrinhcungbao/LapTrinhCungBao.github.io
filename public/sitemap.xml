@@ -2,32 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/bai-9/</loc>
-    <lastmod>2025-12-26T21:35:00+07:00</lastmod>
+    <loc>http://localhost:1313/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/posts/bai-8/</loc>
-    <lastmod>2025-12-26T21:30:00+07:00</lastmod>
+    <loc>http://localhost:1313/contact/</loc>
   </url><url>
-    <loc>http://localhost:1313/posts/bai-7/</loc>
-    <lastmod>2025-12-26T21:25:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/bai-6/</loc>
-    <lastmod>2025-12-26T21:20:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/bai-5/</loc>
-    <lastmod>2025-12-26T21:15:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/bai-4/</loc>
-    <lastmod>2025-12-26T21:10:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/bai-3/</loc>
-    <lastmod>2025-12-26T21:05:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/bai-2/</loc>
-    <lastmod>2025-12-26T21:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/bai-1/</loc>
-    <lastmod>2025-12-26T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tips/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
@@ -37,16 +16,30 @@
   </url><url>
     <loc>http://localhost:1313/categories/javascript/</loc>
   </url><url>
-    <loc>http://localhost:1313/experience/</loc>
+    <loc>http://localhost:1313/posts/bai-3/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/bai-6/</loc>
   </url><url>
     <loc>http://localhost:1313/</loc>
   </url><url>
-    <loc>http://localhost:1313/contact/</loc>
+    <loc>http://localhost:1313/posts/bai-1/</loc>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
   </url><url>
+    <loc>http://localhost:1313/posts/bai-10/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/bai-9/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/bai-2/</loc>
+  </url><url>
     <loc>http://localhost:1313/tags/</loc>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://localhost:1313/posts/bai-4/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/bai-7/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/bai-8/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/bai-5/</loc>
   </url>
 </urlset>

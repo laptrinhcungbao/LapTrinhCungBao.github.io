@@ -3,4 +3,4 @@ title: "Lập Trình Cùng Bảo"
 ---
 
 
-{{< home_layout >}}
+{{< home_layout2 >}}

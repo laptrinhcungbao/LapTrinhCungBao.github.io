@@ -1,14 +1,94 @@
-/* Ẩn hoàn toàn danh sách bài viết mặc định ở trang chủ */
-/* .home-posts, 
-main > article:not(:first-child),
-.list-page {
-    display: none !important;
-} */
+/* 1. Nhúng phông chữ đẹp từ Google Fonts (Hỗ trợ tiếng Việt cực tốt) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* Đảm bảo phần nội dung mình tự viết (trong _index.md) vẫn hiện */
-/* main > article:first-child {
-    display: block !important;
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-} */
+:root {
+    /* Bảng màu hiện đại - Tông xanh sâu chuyên nghiệp */
+    --primary: #60a5fa;         /* Màu xanh sáng cho link và điểm nhấn */
+    --secondary: #94a3b8;       /* Màu chữ phụ */
+    --tertiary: #1e293b;        /* Màu nền thẻ bài viết */
+    --content: #e2e8f0;         /* Màu chữ nội dung chính (Trắng xám dễ đọc) */
+    --theme: #0f172a;           /* Màu nền tối sâu (Dark Navy) */
+    --code-bg: #1e293b;         /* Nền khối code */
+    
+    /* Font chữ */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --code-font: 'JetBrains Mono', monospace;
+}
+
+/* 2. Chỉnh sửa chữ (Typography) */
+body {
+    font-family: var(--font-family);
+    line-height: 1.7;
+    color: var(--content);
+    background-color: var(--theme);
+}
+
+h1, h2, h3, h4 {
+    color: #f8fafc; /* Chữ tiêu đề trắng sáng hơn */
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* 3. Hiệu ứng Menu đẹp hơn */
+.menu a {
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.menu a:hover {
+    color: var(--primary) !important;
+    background: rgba(96, 165, 250, 0.1); /* Hiệu ứng hover nhẹ */
+}
+
+/* 4. Làm đẹp các thẻ bài viết (Entry/Post cards) */
+.post-entry {
+    background: var(--tertiary) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px !important;
+    transition: transform 0.2s ease, border 0.2s ease;
+    margin-bottom: 20px;
+}
+
+.post-entry:hover {
+    transform: translateY(-4px);
+    border: 1px solid var(--primary);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* 5. Màu chữ trong nội dung bài viết */
+.post-content {
+    font-size: 1.1rem;
+    color: #cbd5e1; /* Màu xám nhạt không gây mỏi mắt */
+}
+
+.post-content a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary);
+}
+
+.post-content a:hover {
+    border-bottom: 2px solid var(--primary);
+}
+
+/* 6. Chỉnh sửa khối Code cho dân lập trình */
+code {
+    font-family: var(--code-font);
+    font-size: 0.95em;
+    background: var(--code-bg);
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+/* Bỏ gạch chân cho tất cả link bên trong bài viết */
+.post-content a, .post-meta a {
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* Hiệu ứng khi di chuột qua: Chỉ đổi màu, không hiện gạch chân */
+.post-content a:hover, .post-meta a:hover {
+    color: #f89820 !important;
+    text-decoration: none !important;
+}

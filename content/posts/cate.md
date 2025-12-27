@@ -4,4 +4,4 @@ title: "Danh mục bài viết"
 
 
 
-{{< custom_layout >}}
+{{< custom_layout2 >}}

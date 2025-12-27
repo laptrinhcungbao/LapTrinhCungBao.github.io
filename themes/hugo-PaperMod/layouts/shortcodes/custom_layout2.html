@@ -1,0 +1,156 @@
+<div class="custom-container">
+  <!-- Sidebar Menu -->
+  <div class="sidebar-menu">
+    <button class="tab-btn active" id="btn-java" onclick="showPosts('java')">
+      <span class="icon">☕</span> Java
+    </button>
+    <button class="tab-btn" id="btn-js" onclick="showPosts('js')">
+      <span class="icon">⚡</span> JavaScript
+    </button>
+  </div>
+
+  <!-- Content List -->
+  <div class="content-list">
+    <div id="java-list" class="list-container">
+      <a href="/posts/bai-1/" class="p-item java-border">☕ Bài 1: Lập trình Socket cơ bản với Java</a>
+      <a href="/posts/bai-2/" class="p-item java-border">☕ Bài 2: Quản lý đa luồng (Multi-threading)</a>
+      <a href="/posts/bai-3/" class="p-item java-border">☕ Bài 3:  Kết nối MySQL bằng JDBC</a>
+      <a href="/posts/bai-4/" class="p-item java-border">☕ Bài 4: Tạo giao diện người dùng với Java Swing</a>
+      <a href="/posts/bai-5/" class="p-item java-border">☕ Bài 5: Xử lý File & Stream trong Java</a>
+    </div>
+    
+    <div id="js-list" class="list-container" style="display: none;">
+      <a href="/posts/bai-6/" class="p-item js-border">⚡ Bài 1: Làm chủ biến và kiểu dữ liệu trong JavaScript</a>
+      <a href="/posts/bai-7/" class="p-item js-border">⚡ Bài 2: Thao tác với DOM bằng JavaScript</a>
+      <a href="/posts/bai-8/" class="p-item js-border">⚡ Bài 3: Xử lý bất đồng bộ với Async và Await</a>
+      <a href="/posts/bai-9/" class="p-item js-border">⚡ Bài 4: Quản lý bộ nhớ và Garbage Collection</a>
+      <a href="/posts/bai-10/" class="p-item js-border">⚡ Bài 5: Quản lý bộ nhớ & Phá vỡ giới hạn Đơn luồng</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Container chính */
+  .custom-container {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    margin-top: 30px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Cột nút bấm bên trái */
+  .sidebar-menu {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: sticky;
+    top: 20px;
+  }
+
+  .tab-btn {
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1e293b; /* Màu tertiary giống CSS trước */
+    color: #94a3b8;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: left;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tab-btn:hover {
+    background: #334155;
+    color: #fff;
+  }
+
+  /* Trạng thái nút đang được chọn */
+  .tab-btn.active#btn-java {
+    border-color: #f89820;
+    color: #f89820;
+    background: rgba(248, 152, 32, 0.1);
+  }
+
+  .tab-btn.active#btn-js {
+    border-color: #00abff;
+    color: #00abff;
+    background: rgba(0, 171, 255, 0.1);
+  }
+
+  /* Danh sách bài viết */
+  .content-list {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .p-item {
+    display: block;
+    padding: 18px 25px;
+    background: #1e293b;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  /* Màu viền riêng cho từng loại bài */
+  .java-border { border-left-color: #f89820; }
+  .js-border { border-left-color: #00abff; }
+
+  .p-item:hover {
+    background: #334155;
+    transform: translateX(8px);
+    color: #fff;
+  }
+
+  /* Responsive cho điện thoại */
+  @media (max-width: 768px) {
+    .custom-container { flex-direction: column; }
+    .sidebar-menu { width: 100%; position: static; flex-direction: row; }
+    .tab-btn { flex: 1; justify-content: center; }
+  }
+</style>
+
+<script>
+  function showPosts(type) {
+    const javaList = document.getElementById('java-list');
+    const jsList = document.getElementById('js-list');
+    const btnJava = document.getElementById('btn-java');
+    const btnJs = document.getElementById('btn-js');
+
+    if(type === 'java') {
+      javaList.style.display = 'block';
+      jsList.style.display = 'none';
+      btnJava.classList.add('active');
+      btnJs.classList.remove('active');
+    } else {
+      javaList.style.display = 'none';
+      jsList.style.display = 'block';
+      btnJava.classList.remove('active');
+      btnJs.classList.add('active');
+    }
+  }
+
+  // Đoạn mã mới xử lý khi trang vừa load xong
+  window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab'); // Lấy giá trị của tham số 'tab'
+
+    if (tab === 'js') {
+      showPosts('js');
+    } else {
+      showPosts('java'); // Mặc định là java nếu không có tham số
+    }
+  };
+</script>

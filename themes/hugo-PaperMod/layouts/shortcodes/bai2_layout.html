@@ -1,0 +1,145 @@
+<style>
+    /* Dòng này sẽ tìm tiêu đề chính của trang và đổi màu */
+    .post-single .post-header h1, 
+    h1.post-title, 
+    .post-header h1 { 
+        color: #00abff !important; 
+    }
+
+    .post-single {
+        line-height: 1.9;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        text-align: justify;
+    }
+</style>
+<article class="post-single">
+    <header class="post-header" style="margin-bottom: 40px;">
+        <div class="post-meta" style="color: #94a3b8; font-size: 0.9rem;">
+            <span>📅 27 Tháng 12, 2025</span> • 
+            <span>📁 
+                <a href="/posts/cate/" 
+                style="color: #60a5fa; text-decoration: none !important; font-weight: bold;">
+                Java
+                </a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content" style="line-height: 1.9; color: #cbd5e1; font-size: 1.1rem; border-top: 1px solid #334155; padding-top: 25px; text-align: justify;">
+    
+    <p>Chào mừng các bạn đã quay trở lại với series <strong>Lập Trình Cùng Bảo</strong>! Ở bài trước, chúng ta đã xây dựng thành công một Server Socket cơ bản. Tuy nhiên, bạn có nhận ra một hạn chế chết người không? Đó là Server của chúng ta chỉ có thể phục vụ <strong>duy nhất một khách hàng</strong> tại một thời điểm. Nếu Client A đang kết nối, Client B sẽ bị chặn đứng (block) cho đến khi Client A ngắt kết nối.</p>
+    
+    <p>Trong thực tế, một Server chuyên nghiệp phải có khả năng tiếp nhận hàng nghìn kết nối cùng lúc. Để làm được điều đó, chúng ta cần đến "phép phân thân" trong lập trình: <strong>Multi-threading (Đa luồng)</strong>.</p>
+
+    <hr style="border: 0; border-top: 1px solid #334155; margin: 40px 0;">
+
+    <h2 style="color: #60a5fa; margin-top: 30px;">1. Tại sao Server cần Đa luồng?</h2>
+    <p>Hãy tưởng tượng bạn là chủ một tiệm cà phê. Nếu bạn vừa là người pha chế, vừa là người tính tiền, khách hàng sẽ phải xếp hàng rất dài. Giải pháp là gì? Bạn thuê thêm nhân viên. Mỗi nhân viên (Thread) sẽ phục vụ một khách hàng (Client) riêng biệt. Trong Java, quy trình xử lý đa luồng cho Socket diễn ra như sau:</p>
+    
+    
+
+    <ul style="margin-left: 20px; list-style-type: square; margin-top: 15px;">
+        <li><strong>Main Thread:</strong> Luôn túc trực tại cổng (Port) để lắng nghe yêu cầu kết nối bằng lệnh <code>accept()</code>.</li>
+        <li><strong>Worker Thread:</strong> Ngay khi có Client kết nối, Main Thread sẽ "đẻ" ra một Thread mới và bàn giao Client cho Thread này xử lý.</li>
+        <li><strong>Looping:</strong> Sau khi bàn giao, Main Thread lập tức quay lại trạng thái lắng nghe để chờ khách hàng tiếp theo.</li>
+    </ul>
+
+    <h2 style="color: #60a5fa; margin-top: 40px;">2. Triển khai Worker Thread </h2>
+    <p>Chúng ta sẽ tách logic xử lý Client sang một Class riêng kế thừa từ <code>Thread</code> hoặc implement <code>Runnable</code>. Ở đây, mình sử dụng <code>Runnable</code> để đảm bảo tính linh hoạt cho mã nguồn.</p>
+
+    <h3 style="color: #f89820; margin-bottom: 15px;">Bước 1: Class xử lý từng Client (ClientHandler.java)</h3>
+    <div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; overflow-x: auto; margin-bottom: 25px;">
+<pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; line-height: 1.5; color: #e2e8f0;">
+import java.io.*;
+import java.net.*;
+
+public class ClientHandler implements Runnable {
+    private Socket clientSocket;
+
+    public ClientHandler(Socket socket) {
+        this.clientSocket = socket;
+    }
+
+    @Override
+    public void run() {
+        try (
+            BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true)
+        ) {
+            System.out.println("LOG: Handling client on thread " + Thread.currentThread().getName());
+            
+            String message;
+            while ((message = input.readLine()) != null) {
+                System.out.println("RECEIVED: " + message);
+                output.println("SERVER_ECHO: " + message.toUpperCase());
+                if (message.equalsIgnoreCase("exit")) break;
+            }
+        } catch (IOException e) {
+            System.err.println("HANDLER ERROR: " + e.getMessage());
+        } finally {
+            try { clientSocket.close(); } catch (IOException e) {}
+            System.out.println("LOG: Client disconnected.");
+        }
+    }
+}</pre>
+    </div>
+
+    <h3 style="color: #00abff; margin-bottom: 15px;">Bước 2: Server đa luồng chính (MultiThreadedServer.java)</h3>
+    <p>Trong Server này, chúng ta dùng vòng lặp <code>while(true)</code> để chấp nhận kết nối liên tục.</p>
+    <div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; overflow-x: auto; margin-bottom: 25px;">
+<pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; line-height: 1.5; color: #e2e8f0;">
+import java.io.*;
+import java.net.*;
+
+public class MultiThreadedServer {
+    public static void main(String[] args) {
+        int port = 5000;
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("LOG: Multi-threaded Server started on port " + port);
+
+            while (true) {
+                Socket socket = serverSocket.accept();
+                System.out.println("LOG: New client detected!");
+                
+                // Create a new thread for each client
+                ClientHandler handler = new ClientHandler(socket);
+                Thread thread = new Thread(handler);
+                thread.start();
+            }
+        } catch (IOException e) {
+            System.err.println("SERVER CRITICAL ERROR: " + e.getMessage());
+        }
+    }
+}</pre>
+    </div>
+
+<h2 style="color: #60a5fa; margin-top: 40px;">3. Kiểm tra tính năng "Song Hành"</h2>
+<p>Để thấy được sức mạnh của bài này so với bài 1, bạn hãy thực hiện bài test sau:</p>
+<ol style="margin-left: 20px; margin-bottom: 25px;">
+    <li style="margin-bottom: 10px;">Chạy <strong>MultiThreadedServer</strong>.</li>
+    <li style="margin-bottom: 10px;">Mở <strong>3 Terminal khác nhau</strong> và chạy 3 Client đồng thời (sử dụng code MyClient từ bài 1).</li>
+    <li style="margin-bottom: 10px;">Gửi tin nhắn từ cả 3 Terminal. Bạn sẽ thấy Server phản hồi ngay lập tức cho cả 3 mà không cần chờ đợi!</li>
+</ol>
+
+
+
+<h2 style="color: #60a5fa; margin-top: 40px;">4. Tổng kết và Cảnh báo</h2>
+<p>Chúc mừng Bảo! Bạn đã nâng cấp Server của mình lên một tầm cao mới. Tuy nhiên, <strong>"Quyền lực càng cao, trách nhiệm càng lớn"</strong>. Khi làm việc với đa luồng, bạn cần lưu ý:</p>
+<ul style="margin-left: 20px; list-style-type: square;">
+    <li><strong>Resource Management:</strong> Nếu có 10.000 Client, việc tạo 10.000 Thread sẽ khiến RAM bị cạn kiệt. Ở các bài nâng cao, chúng ta sẽ dùng <code>Thread Pool</code> để giới hạn số lượng Thread.</li>
+    <li><strong>Thread Safety:</strong> Nếu nhiều Thread cùng ghi vào một file hoặc một Database, dữ liệu sẽ bị loạn. Lúc đó ta cần dùng đến <code>synchronized</code>.</li>
+</ul>
+
+<p style="margin-top: 15px;">Bài viết tới, Bảo sẽ hướng dẫn các bạn bước vào thế giới lưu trữ: <strong>Làm sao để Server lưu thông tin khách hàng vào Database (MySQL)?</strong> Đừng bỏ lỡ nhé!</p>
+
+<hr style="border: 0; border-top: 1px solid #334155; margin: 40px 0;">
+
+<p style="margin-top: 40px; font-weight: bold; display: flex; flex-wrap: wrap; gap: 18px;">
+    <a href="/" style="color: #60a5fa; text-decoration: none !important; transition: 0.3s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#60a5fa'">#LậpTrìnhCùngBảo</a>
+    <a href="/posts/bai-2/" style="color: #60a5fa; text-decoration: none !important; transition: 0.3s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#60a5fa'">#JavaMultiThread</a>
+    <a href="/posts/cate/" style="color: #60a5fa; text-decoration: none !important; transition: 0.3s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#60a5fa'">#HọcBackend</a>
+    <a href="/tips/" style="color: #60a5fa; text-decoration: none !important; transition: 0.3s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#60a5fa'">#Concurrency</a>
+</p>
+</div>
+</article>

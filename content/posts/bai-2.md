@@ -1,19 +1,8 @@
 ---
-title: "Bài 2: Quản lý đa luồng (Multi-threading) trong Java"
-date: 2025-12-26T21:00:00+07:00
+title: "Quản lý đa luồng (Multi-threading) - Nghệ thuật phân thân trong Java"
 draft: false
 categories: ["Java"]
-ssummary: "Tìm hiểu cách tối ưu hóa hiệu suất ứng dụng bằng việc xử lý nhiều tác vụ cùng lúc với đa luồng."
+summary: "Tìm hiểu cách Server phục vụ hàng ngàn khách hàng cùng lúc thông qua kỹ thuật Đa luồng (Multi-threading) trong Java."
 ---
-Đa luồng giúp ứng dụng Java xử lý nhiều công việc cùng lúc. Điều này cực kỳ quan trọng khi xây dựng Server để phục vụ nhiều Client.
 
-```java
-public class MyThread extends Thread {
-    public void run() {
-        System.out.println("Luồng đang chạy...");
-    }
-    public static void main(String[] args) {
-        MyThread t1 = new MyThread();
-        t1.start();
-    }
-}
+{{< bai2_layout >}}

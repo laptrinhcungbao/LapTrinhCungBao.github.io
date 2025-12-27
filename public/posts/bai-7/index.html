@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Bài 7: Thao tác với DOM bằng JavaScript | Lập Trình Cùng Bảo</title>
+<title>Thao tác với DOM - Điều khiển Website theo ý muốn | Lập Trình Cùng Bảo</title>
 <meta name="keywords" content="">
-<meta name="description" content="Cách điều khiển và thay đổi nội dung website động thông qua thao tác với cây cấu trúc DOM.">
+<meta name="description" content="Tìm hiểu cách JavaScript tương tác với HTML và CSS thông qua Document Object Model để tạo ra các trang web động.">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/bai-7/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.74193e1612067f5fc07f882e6188e4e4c5ad453d7d39f0a2e9427af822397dfe.css" integrity="sha256-dBk&#43;FhIGf1/Af4guYYjk5MWtRT19OfCi6UJ6&#43;CI5ff4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4d1f84097cfc5ec1222cf411c12430165b2555fdd442156c1e39e3d311603744.css" integrity="sha256-TR&#43;ECXz8XsEiLPQRwSQwFlslVf3UQhVsHjnj0xFgN0Q=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -74,6 +74,21 @@
                     <span>Bài đăng</span>
                 </a>
             </li>
+            <li>
+                <a href="http://localhost:1313/tips" title="Tip học tập">
+                    <span>Tip học tập</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="Thông tin của Bảo">
+                    <span>Thông tin của Bảo</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact" title="Liên hệ">
+                    <span>Liên hệ</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -83,15 +98,227 @@
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Bài 7: Thao tác với DOM bằng JavaScript
+      Thao tác với DOM - Điều khiển Website theo ý muốn
     </h1>
-    <div class="post-meta"><span title='2025-12-26 21:25:00 +0700 +07'>December 26, 2025</span>
+    <div class="post-meta">
 
 </div>
   </header> 
-  <div class="post-content"><p>DOM giúp JavaScript có thể thay đổi nội dung HTML và CSS ngay lập tức mà không cần tải lại trang.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;myTitle&#34;</span>).<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Đã thay đổi bởi Bảo!&#34;</span>;
-</span></span></code></pre></div>
+  <div class="post-content"><style>
+     
+    .post-single .post-header h1, 
+    h1.post-title, 
+    .post-header h1 { 
+        color: #00abff !important; 
+    }
+
+    .post-single {
+        line-height: 1.9;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        text-align: justify;
+    }
+    .post-single {
+        line-height: 1.9;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        text-align: justify;
+    }
+    .dom-tree-box {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        border: 2px solid #00abff;
+        border-radius: 16px;
+        padding: 30px;
+        margin: 30px 0;
+    }
+    .method-card {
+        background: #1e293b;
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 25px;
+        border-left: 5px solid #00abff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .code-window {
+        background: #0f172a;
+        padding: 20px;
+        border-radius: 10px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.95rem;
+        color: #e2e8f0;
+        margin: 25px 0;
+        border: 1px solid #334155;
+        position: relative;
+    }
+    .code-window::before {
+        content: "JavaScript";
+        position: absolute;
+        top: -12px;
+        right: 20px;
+        background: #00abff;
+        color: white;
+        font-size: 0.7rem;
+        padding: 2px 10px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+    .highlight-blue { color: #00abff; font-weight: bold; }
+    
+     
+    .interactive-demo {
+        background: #f8fafc;
+        color: #1e293b;
+        padding: 30px;
+        border-radius: 16px;
+        text-align: center;
+        margin: 35px 0;
+        border: 2px dashed #00abff;
+    }
+    .magic-content {
+        display: none;  
+        margin-top: 20px;
+        padding: 15px;
+        background: #e0f2fe;
+        border-radius: 10px;
+        color: #0369a1;
+        font-weight: 500;
+        animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .demo-btn {
+        background: #00abff;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 14px rgba(0, 171, 255, 0.4);
+    }
+    .demo-btn:hover {
+        background: #0086cc;
+        transform: scale(1.05);
+    }
+    .demo-btn.active {
+        background: #ef4444;
+        box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+    }
+</style>
+
+<article class="post-single">
+    <header class="post-header" style="margin-bottom: 40px;">
+        <div class="post-meta" style="color: #94a3b8; font-size: 0.9rem;">
+            <span>📅 26 Tháng 12, 2025</span> • 
+            <span>📁 <a href="/posts/cate/?tab=js" style="color: #f7df1e; text-decoration: none !important; font-weight: bold;">JavaScript</a></span>
+        </div>
+    </header>
+
+    <p>Chào các bạn! Bạn đã bao giờ tự hỏi làm thế nào mà khi click vào một icon "Tim" trên Facebook, nó lập tức đổi sang màu đỏ mà trang web không hề bị load lại? Hay làm sao để một menu ẩn có thể trượt ra khi bạn nhấn vào dấu gạch ngang? Câu trả lời duy nhất chính là <span class="highlight-blue">DOM (Document Object Model)</span>.</p>
+
+    <h2 style="color: #00abff; margin-top: 40px;">1. DOM Là Gì? Tại Sao Nó Lại Quan Trọng?</h2>
+    <p>Hãy tưởng tượng file HTML của bạn là một bản thiết kế trên giấy. Khi trình duyệt "đọc" bản thiết kế này, nó xây dựng nên một cái cây mô hình gọi là <strong>Cây DOM</strong>. Trong đó, mỗi thẻ HTML là một "nhánh" hoặc một "lá".</p>
+    <p>JavaScript đóng vai trò như một bàn tay điều khiển, có thể cầm nắm, thay đổi màu sắc, hoặc thậm chí là cắt bỏ các nhánh cây này ngay lập tức. Đây là kỹ năng tối thượng để tạo ra trải nghiệm người dùng (UX) hiện đại.</p>
+
+    
+
+    <h2 style="color: #00abff; margin-top: 40px;">2. Các Tuyệt Chiêu "Tìm Kiếm" Phần Tử</h2>
+    <p>Trước khi muốn thay đổi điều gì, bạn phải tìm thấy nó trong rừng Node dày đặc. Có 3 cách phổ biến nhất mà mọi lập trình viên đều dùng:</p>
+
+    <div class="method-card">
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 15px;">🔍 <code class="highlight-blue">getElementById()</code>: Nhanh nhất, dùng khi bạn đã đặt ID cho phần tử.</li>
+            <li style="margin-bottom: 15px;">🎯 <code class="highlight-blue">querySelector()</code>: Vạn năng nhất, cho phép bạn chọn phần tử bằng Class (<code>.name</code>), ID (<code>#id</code>) hoặc thẻ (<code>div</code>).</li>
+            <li>📚 <code class="highlight-blue">querySelectorAll()</code>: Trả về một danh sách (NodeList) tất cả các phần tử khớp với yêu cầu.</li>
+        </ul>
+    </div>
+
+    <h2 style="color: #00abff; margin-top: 40px;">3. Thao Tác Nội Dung & CSS Real-time</h2>
+    <p>Sau khi đã "tóm" được phần tử, bạn có thể thay đổi thuộc tính của nó bằng các câu lệnh sau:</p>
+
+    <div class="code-window">
+<pre style="margin: 0;">
+const myBox = document.querySelector(".box");
+
+// 1. Thay đổi nội dung
+myBox.innerHTML = "&lt;span&gt;Nội dung mới xịn hơn&lt;/span&gt;";
+
+// 2. Thay đổi style trực tiếp (Inline Style)
+myBox.style.borderRadius = "50%";
+
+// 3. Thay đổi Class (Khuyên dùng để giữ code sạch)
+myBox.classList.toggle("hidden");</pre>
+    </div>
+
+    <h2 style="color: #00abff; margin-top: 40px;">4. Demo Tương Tác: Cơ Chế Ẩn/Hiện Nội Dung</h2>
+    <p>Thay vì dùng những thông báo <code>alert</code> gây khó chịu, chúng ta sẽ dùng DOM để điều khiển thuộc tính <code>display</code> của một phần tử. Đây là cách làm Menu, Accordion hoặc các ô Comment ẩn trên web.</p>
+
+    <div class="interactive-demo">
+        <h3 id="demo-text" style="margin-top: 0; color: #1e293b;">Bạn muốn thấy phép thuật không?<a hidden class="anchor" aria-hidden="true" href="#demo-text">#</a></h3>
+        <p>Nhấn nút bên dưới để sử dụng JavaScript thay đổi CSS display: block/none.</p>
+        
+        <button id="magic-btn" class="demo-btn" onclick="toggleMagic()">Hiện Phép Thuật!</button>
+
+        <div id="magic-area" class="magic-content">
+            ✨ DOM ĐÃ THAY ĐỔI THÀNH CÔNG! ✨<br>
+            <small>Bảo đã dùng style.display để điều khiển mình đấy!</small>
+        </div>
+    </div>
+
+    <script>
+        function toggleMagic() {
+            const area = document.getElementById('magic-area');
+            const btn = document.getElementById('magic-btn');
+            const text = document.getElementById('demo-text');
+
+            if (area.style.display === "block") {
+                area.style.display = "none";
+                btn.innerText = "Hiện Phép Thuật!";
+                btn.classList.remove('active');
+                text.innerText = "Bạn muốn thấy phép thuật không?";
+                text.style.color = "#1e293b";
+            } else {
+                area.style.display = "block";
+                btn.innerText = "Ẩn Phép Thuật!";
+                btn.classList.add('active');
+                text.innerText = "✨ MAGIC IS HAPPENING! ✨";
+                text.style.color = "#00abff";
+            }
+        }
+    </script>
+
+    <h2 style="color: #00abff; margin-top: 40px;">5. Thêm/Xóa Phần Tử (Dynamic CRUD)</h2>
+    <p>Mạnh mẽ hơn cả việc sửa, DOM cho phép bạn "sinh ra" phần tử mới. Ví dụ: khi bạn nhấn "Thêm vào giỏ hàng", một dòng sản phẩm mới sẽ được tạo ra.</p>
+    <ul style="margin-left: 20px;">
+        <li style="margin-bottom: 10px;"><span class="highlight-blue">document.createElement('li')</span>: Tạo ra một thẻ <code>li</code> trong bộ nhớ.</li>
+        <li><span class="highlight-blue">parentElement.appendChild(newChild)</span>: Đưa thẻ vừa tạo vào trang web để người dùng thấy.</li>
+    </ul>
+
+    <h2 style="color: #00abff; margin-top: 40px;">6. Hình Ảnh Thực Tế Từ Ứng Dụng</h2>
+    <p>Dưới đây là kết quả của việc kết hợp DOM với các giao diện phức tạp hơn (như Swing bài trước nhưng trên nền tảng Web):</p>
+    
+    <div style="text-align: center; margin: 30px 0;">
+        <img src="/images/cal.png" alt="Kết quả ứng dụng Swing" style="max-width: 100%; margin-left: 100px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #334155;">
+        <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 10px;">Giao diện ứng dụng có thể thay đổi linh hoạt nhờ thao tác DOM chính xác.</p>
+    </div>
+
+    <h2 style="color: #00abff; margin-top: 40px;">7. Tổng kết</h2>
+    <p>Thao tác với DOM là bước ngoặt biến bạn từ một người "viết code logic" thành một "người xây dựng trải nghiệm". Hãy nhớ: <strong>Tìm đúng Node -> Bắt đúng sự kiện -> Thay đổi đúng thuộc tính.</strong></p>
+    <p>Ở bài tiếp theo, Bảo sẽ cùng các bạn chinh phục <strong>Async/Await</strong> - kỹ thuật giúp trang web lấy dữ liệu từ Server mà không bị "đứng hình" nhé!</p>
+
+    <hr style="border: 0; border-top: 1px solid #334155; margin: 40px 0;">
+
+    <p style="margin-top: 40px; font-weight: bold; display: flex; flex-wrap: wrap; gap: 18px;">
+        <a href="/" style="color: #00abff; text-decoration: none !important;">#LậpTrìnhCùngBảo</a>
+        <a href="/posts/bai-7/" style="color: #00abff; text-decoration: none !important;">#DOMManipulation</a>
+        <a href="/posts/cate/?tab=js" style="color: #00abff; text-decoration: none !important;">#WebInteractive</a>
+    </p>
+</article>
+
 
   </div>
 

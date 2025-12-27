@@ -1,0 +1,332 @@
+<style>
+    /* Dòng này sẽ tìm tiêu đề chính của trang và đổi màu */
+    .post-single .post-header h1, 
+    h1.post-title, 
+    .post-header h1 { 
+        color: #00abff !important; 
+    }
+
+    .post-single {
+        line-height: 1.9;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        text-align: justify;
+    }
+    .post-single {
+        line-height: 1.9;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        text-align: justify;
+    }
+    /* Grid chuyển thành Flexbox để xếp chồng dễ dàng */
+    .swing-component-grid {
+        display: flex;
+        flex-direction: column; /* Xếp chồng dọc */
+        gap: 20px;
+        margin: 30px 0;
+    }
+    .component-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid #334155;
+        border-radius: 16px;
+        padding: 25px;
+        width: 100%; /* Chiếm hết chiều ngang */
+        box-sizing: border-box;
+    }
+    .component-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        border-color: #60a5fa;
+    }
+    .component-card h4 {
+        color: #60a5fa;
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+    }
+    .code-example {
+        background: #0f172a; /* Màu nền tối hơn cho code */
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #1e293b;
+        margin-top: 15px;
+    }
+    .highlight-tip {
+        background: rgba(16, 185, 129, 0.08);
+        border-left: 5px solid #10b981;
+        padding: 15px 20px;
+        margin: 25px 0;
+        border-radius: 8px;
+        color: #94d3ae;
+    }
+</style>
+
+<article class="post-single">
+    <header class="post-header" style="margin-bottom: 40px;">
+        <div class="post-meta" style="color: #94a3b8; font-size: 0.9rem;">
+            <span>📅 26 Tháng 12, 2025</span> • 
+            <span>📁 <a href="/posts/cate/" style="color: #60a5fa; text-decoration: none !important; font-weight: bold;">Java</a></span>
+        </div>
+    </header>
+
+    <p>Sau những bài học về Backend và Database, giờ là lúc chúng ta chạm tay vào thế giới trực quan hơn: 'Giao diện người dùng (User Interface - UI)'. Đối với Java Desktop, 'Swing' chính là thư viện "quốc dân" đã tạo nên hàng triệu ứng dụng từ những năm 90 cho đến nay.</p>
+    
+    <p>Swing cung cấp một bộ công cụ phong phú để bạn xây dựng cửa sổ (Windows), nút bấm (Buttons), ô nhập liệu (Text Fields) và nhiều thành phần khác, giúp người dùng tương tác dễ dàng với phần mềm của bạn.</p>
+
+    
+
+    <h2 style="color: #60a5fa; margin-top: 40px;">1. Kiến trúc GUI với Swing</h2>
+    <p>Mỗi ứng dụng Swing đều bắt đầu với một Frame (khung cửa sổ), bên trong Frame là các Panel (bảng điều khiển) chứa các Component (thành phần giao diện như nút, ô text). Cấu trúc này giúp chúng ta tổ chức giao diện một cách logic và dễ quản lý.</p>
+
+    
+    <div style="text-align: center; margin: 40px 0;">
+    <div style="display: inline-block; background: #1e293b; padding: 10px; border-radius: 15px; border: 1px solid #334155;">
+        <img src="/images/sodo.png" 
+             alt="Kết quả ứng dụng Swing" 
+             style="width: 100%; max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); display: block;">
+             <p style="color: #94a3b8; margin-top: 15px; font-size: 0.95rem;"><i>Hình 1: Sơ đồ phân cấp các thành phần cơ bản trong Java Swing.</i></p>
+    </div>
+    </div>
+    <h2 style="color: #60a5fa; margin-top: 40px;">2. Các thành phần Swing cơ bản và code demo</h2>
+    <p>Chúng ta sẽ cùng nhau tạo một cửa sổ đơn giản với một nút bấm. Đây là nền tảng để bạn mở rộng ứng dụng sau này.</p>
+
+    <div class="swing-component-grid">
+        <div class="component-card">
+            <h4><code>JFrame</code></h4>
+            <p>Là cửa sổ chính của ứng dụng. Mọi thứ khác đều nằm bên trong nó.</p>
+            <div class="code-example">
+                <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.5; color: #e2e8f0;">
+JFrame frame = new JFrame("Bao's App");
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setSize(400, 300);
+frame.setLocationRelativeTo(null); // Giữa màn hình
+                </pre>
+            </div>
+        </div>
+        <div class="component-card">
+            <h4><code>JButton</code></h4>
+            <p>Nút bấm để người dùng tương tác. Khi click, nó kích hoạt một hành động.</p>
+            <div class="code-example">
+                <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.5; color: #e2e8f0;">
+JButton button = new JButton("Click Me!");
+button.addActionListener(e -> {
+    System.out.println("Button Clicked!");
+    // Các hành động khác tại đây
+});
+                </pre>
+            </div>
+        </div>
+        <div class="component-card">
+            <h4><code>JLabel</code></h4>
+            <p>Hiển thị văn bản hoặc hình ảnh tĩnh. Thường dùng làm nhãn.</p>
+            <div class="code-example">
+                <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.5; color: #e2e8f0;">
+JLabel label = new JLabel("Hello Swing!");
+label.setFont(new Font("Arial", Font.BOLD, 16));
+                </pre>
+            </div>
+        </div>
+        <div class="component-card">
+            <h4><code>JTextField</code></h4>
+            <p>Ô nhập liệu một dòng để người dùng điền thông tin.</p>
+            <div class="code-example">
+                <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.5; color: #e2e8f0;">
+JTextField textField = new JTextField(20); // 20 cột
+textField.setText("Enter your name");
+String text = textField.getText();
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <h2 style="color: #60a5fa; margin-top: 40px;">3. Ví dụ ứng dụng Swing hoàn chỉnh</h2>
+    <p>Hãy cùng ghép các thành phần trên để tạo ra một ứng dụng GUI đơn giản, hiển thị một cửa sổ với một nút bấm.</p>
+
+    <div class="code-example">
+<pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; line-height: 1.5; color: #e2e8f0;">
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+
+public class MySwingApp {
+    // Biến để ghi nhớ ô nhập liệu nào đang được chọn
+    private static JTextField activeField;
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Bao's Modern Calculator");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(400, 500);
+            frame.setLocationRelativeTo(null);
+
+            // Thiết lập màu sắc chủ đạo (Dark Theme cho giống Blog)
+            Color darkBg = new Color(30, 41, 59);
+            Color btnColor = new Color(51, 65, 85);
+            Color orangeAccent = new Color(248, 152, 32);
+
+            JPanel mainPanel = new JPanel(new BorderLayout(15, 15));
+            mainPanel.setBackground(darkBg);
+            mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+            // 1. PHẦN NHẬP LIỆU (NORTH)
+            JPanel inputPanel = new JPanel(new GridLayout(2, 2, 10, 10));
+            inputPanel.setOpaque(false);
+            
+            JTextField txtNum1 = createStyledField();
+            JTextField txtNum2 = createStyledField();
+            activeField = txtNum1; // Mặc định là ô 1
+
+            // Lắng nghe xem người dùng đang nhấn vào ô nào
+            txtNum1.addFocusListener(new FocusAdapter() 
+            { 
+                public void focusGained(FocusEvent e) { activeField = txtNum1; }
+            });
+            txtNum2.addFocusListener(new FocusAdapter() 
+            { 
+                public void focusGained(FocusEvent e) { activeField = txtNum2; }
+            });
+
+            inputPanel.add(createStyledLabel("Number A:", Color.WHITE));
+            inputPanel.add(txtNum1);
+            inputPanel.add(createStyledLabel("Number B:", Color.WHITE));
+            inputPanel.add(txtNum2);
+
+            // 2. PHẦN BÀN PHÍM SỐ VÀ PHÉP TÍNH (CENTER)
+            // Dùng GridLayout 4x4 để chứa 10 số và 4 phép tính + nút Clear
+            JPanel keypadPanel = new JPanel(new GridLayout(4, 4, 8, 8));
+            keypadPanel.setOpaque(false);
+
+            String[] buttons = {
+                "7", "8", "9", "/",
+                "4", "5", "6", "*",
+                "1", "2", "3", "-",
+                "0", "C", "=", "+"
+            };
+
+            for (String text : buttons) {
+                JButton btn = new JButton(text);
+                btn.setFont(new Font("Segoe UI", Font.BOLD, 16));
+                btn.setBackground(btnColor);
+                btn.setForeground(Color.WHITE);
+                btn.setFocusPainted(false);
+                btn.setBorder(BorderFactory.createLineBorder(new Color(71,85,105)));
+
+                // Xử lý sự kiện cho từng nút
+                btn.addActionListener(e -> {
+                    if ("0123456789".contains(text)) {
+                        activeField.setText(activeField.getText() + text);
+                    } else if (text.equals("C")) {
+                        txtNum1.setText("");
+                        txtNum2.setText("");
+                        activeField = txtNum1;
+                    } else if ("+-*/".contains(text)) {
+                        calculate(txtNum1, txtNum2, null, text); 
+                    }
+                });
+                
+                // Hiệu ứng Hover cho nút tính toán
+                if("+-*/=C".contains(text)) btn.setForeground(orangeAccent);
+                
+                keypadPanel.add(btn);
+            }
+
+            // 3. PHẦN KẾT QUẢ (SOUTH)
+            JLabel lblResult = new JLabel("Result: ---", SwingConstants.CENTER);
+            lblResult.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            lblResult.setForeground(orangeAccent);
+            lblResult.setPreferredSize(new Dimension(0, 50));
+
+            // Gán JLabel vào hàm calculate để hiển thị kết quả
+            for (Component c : keypadPanel.getComponents()) {
+                JButton b = (JButton) c;
+                if ("+-*/".contains(b.getText())) {
+                    b.addActionListener(e -> calculate(txtNum1, 
+                    txtNum2, lblResult, b.getText()));
+                }
+            }
+
+            mainPanel.add(inputPanel, BorderLayout.NORTH);
+            mainPanel.add(keypadPanel, BorderLayout.CENTER);
+            mainPanel.add(lblResult, BorderLayout.SOUTH);
+
+            frame.add(mainPanel);
+            frame.setVisible(true);
+        });
+    }
+
+    // Helper: Tạo Label đẹp
+    private static JLabel createStyledLabel(String text, Color color) {
+        JLabel label = new JLabel(text);
+        label.setForeground(color);
+        label.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        return label;
+    }
+
+    // Helper: Tạo TextField đẹp
+    private static JTextField createStyledField() {
+        JTextField field = new JTextField();
+        field.setBackground(new Color(15, 23, 42));
+        field.setForeground(Color.WHITE);
+        field.setCaretColor(Color.WHITE);
+        field.setFont(new Font("Consolas", Font.BOLD, 18));
+        field.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(51, 65, 85)),
+            BorderFactory.createEmptyBorder(5, 10, 5, 10)
+        ));
+        return field;
+    }
+
+    // Hàm hỗ trợ tính toán
+    private static void calculate
+    (JTextField t1, JTextField t2, JLabel res, String op) {
+        if (res == null) return; 
+        try {
+            double a = Double.parseDouble
+            (t1.getText().isEmpty() ? "0" : t1.getText());
+            double b = Double.parseDouble
+            (t2.getText().isEmpty() ? "0" : t2.getText());
+            double result = 0;
+
+            switch (op) {
+                case "+": result = a + b; break;
+                case "-": result = a - b; break;
+                case "*": result = a * b; break;
+                case "/": 
+                    if (b == 0) { res.setText("Cannot div 0!"); return; }
+                    result = a / b; 
+                    break;
+            }
+            res.setText("Result: " + (result % 1 == 0 ? (int)result : result));
+        } catch (NumberFormatException ex) {
+            res.setText("Invalid Input!");
+        }
+    }
+}
+</pre>
+    </div>
+
+    <p>Và đây là kết quả khi bạn chạy đoạn mã trên:</p>
+   <div style="text-align: center; margin: 40px 0;">
+    <div style="display: inline-block; background: #1e293b; padding: 10px; border-radius: 15px; border: 1px solid #334155;">
+        <img src="/images/cal.png" 
+             alt="Kết quả ứng dụng Swing" 
+             style="width: 100%; max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); display: block;">
+    </div>
+    <p style="color: #94a3b8; margin-top: 15px; font-size: 0.95rem; font-style: italic;">
+        Hình 2: Giao diện máy tính bỏ túi (Calculator) hoàn chỉnh bằng Java Swing
+    </p>
+</div>
+
+    <div class="highlight-tip">
+        <strong>💡 Lời khuyên của Bảo:</strong> Luôn chạy các thao tác liên quan đến UI trên <strong>Event Dispatch Thread (EDT)</strong> bằng <code>SwingUtilities.invokeLater()</code> để tránh lỗi giao diện bị treo hoặc không phản hồi.
+    </div>
+
+    <h2 style="color: #60a5fa; margin-top: 40px;">4. Tổng kết</h2>
+    <p>Swing là một công cụ mạnh mẽ để tạo ứng dụng Desktop, đặc biệt là khi bạn muốn phát triển các phần mềm nội bộ, công cụ quản lý. Mặc dù có phần "cổ điển" hơn các framework web hiện đại, nhưng hiểu rõ Swing sẽ giúp bạn nắm bắt được các nguyên lý cơ bản của lập trình GUI.</p>
+    
+    <p>Ở bài tiếp theo, chúng ta sẽ bắt đầu một dự án lớn: **Xây dựng ứng dụng Chat Client/Server hoàn chỉnh** bằng cách kết hợp tất cả kiến thức từ bài Socket, Multi-threading, JDBC và Swing. Hãy sẵn sàng cho thử thách lớn nhất từ trước đến nay nhé!</p>
+
+    <hr style="border: 0; border-top: 1px solid #334155; margin: 40px 0;">
+
+</article>
